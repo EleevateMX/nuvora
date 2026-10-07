@@ -1,0 +1,793 @@
+<title>Nuvora Redes y Landing</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@700;800&family=Public+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: documento de aplicación de marca. Columna de lectura de 1120 px, bandas profundo/crema alternadas como el feed. */
+:root {
+  /* Paleta oficial · Manual de marca v2 (no se agregan colores) */
+  --profundo: #0A2B2C;
+  --verde: #157A6E;
+  --mandarina: #FF8A3D;
+  --uva: #5B3FB8;
+  --crema: #F3F4EE;
+  --blanco: #FFFFFF;
+  --gris: #4D5E5C;
+  --linea: #DEE2D9;
+  --t-verde: #E3F0EC;
+  --t-mandarina: #FFE8D8;
+  --t-uva: #ECE8F8;
+  --suave: #BCD0CB; /* texto secundario sobre profundo, tomado del manual */
+
+  --f-titular: 'Albert Sans', Arial, sans-serif;
+  --f-texto: 'Public Sans', Arial, sans-serif;
+
+  --r-tarjeta: 16px;
+  --r-pill: 999px;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body {
+  margin: 0;
+  background: var(--crema);
+  color: var(--profundo);
+  font-family: var(--f-texto);
+  font-size: 16px;
+  line-height: 1.55;
+}
+.envoltura { max-width: 1120px; margin: 0 auto; padding-inline: 20px; }
+h1, h2, h3, h4 { font-family: var(--f-titular); letter-spacing: -0.03em; line-height: 1; text-wrap: balance; margin: 0; }
+h2 { font-weight: 800; font-size: clamp(34px, 5.4vw, 56px); }
+h3 { font-weight: 800; font-size: clamp(24px, 3vw, 30px); }
+h4 { font-weight: 700; font-size: 19px; letter-spacing: -0.02em; }
+p { margin: 0; }
+.eyebrow { font-weight: 600; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--verde); }
+.lead { font-size: 18px; color: var(--gris); max-width: 64ch; }
+a { color: var(--verde); font-weight: 600; }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--verde); outline-offset: 3px; border-radius: 6px; }
+
+/* ---------- Portada ---------- */
+.portada { background: var(--profundo); color: var(--blanco); padding-block: 28px 64px; }
+.portada .barra { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+.portada .ref { font-size: 13px; color: var(--suave); }
+.portada .cuerpo { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 32px; align-items: end; margin-top: 56px; }
+.portada h1 { font-weight: 800; font-size: clamp(44px, 8vw, 92px); line-height: 0.96; letter-spacing: -0.035em; }
+.portada .lead { color: var(--suave); margin-top: 20px; }
+.portada .eyebrow { color: var(--mandarina); }
+.indice { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 32px; }
+.indice a { color: var(--blanco); text-decoration: none; border: 1.5px solid rgba(255,255,255,.28); padding: 8px 16px; border-radius: var(--r-pill); font-size: 14px; }
+.indice a:hover { border-color: var(--blanco); }
+.portada .duo { display: flex; align-items: flex-end; gap: 8px; }
+@media (max-width: 720px) {
+  .portada .cuerpo { grid-template-columns: 1fr; }
+  .portada .duo { justify-content: flex-start; }
+}
+
+/* ---------- Secciones ---------- */
+section.bloque { padding-block: 72px; }
+section.bloque.blanco { background: var(--blanco); }
+section.bloque.oscuro { background: var(--profundo); color: var(--blanco); }
+section.bloque.oscuro .lead { color: var(--suave); }
+section.bloque.oscuro .eyebrow { color: var(--mandarina); }
+.cabeza { display: grid; gap: 14px; margin-bottom: 40px; }
+.paso { display: inline-flex; align-items: center; gap: 10px; font-family: var(--f-titular); font-weight: 800; font-size: 15px; letter-spacing: -0.01em; }
+.paso b { display: inline-grid; place-items: center; width: 30px; height: 30px; border-radius: 8px; background: var(--profundo); color: var(--blanco); font-size: 15px; }
+.oscuro .paso b { background: var(--blanco); color: var(--profundo); }
+
+/* ---------- Pilares ---------- */
+.pilares { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px; }
+.pilar { background: var(--blanco); border-radius: var(--r-tarjeta); padding: 22px; display: grid; gap: 12px; align-content: start; border: 1px solid var(--linea); }
+.pilar .top { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; min-height: 92px; }
+.pilar .fase { font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--gris); }
+.pilar h3 { font-size: 30px; }
+.pilar dl { margin: 0; display: grid; gap: 8px; font-size: 14px; }
+.pilar dt { font-weight: 600; font-size: 12px; color: var(--gris); text-transform: uppercase; letter-spacing: .05em; }
+.pilar dd { margin: 0; }
+.chip { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: var(--r-pill); background: var(--crema); white-space: nowrap; }
+.chip i { width: 10px; height: 10px; border-radius: 3px; display: inline-block; border: 1px solid rgba(10,43,44,.15); }
+.pilar.p-abrir { background: var(--t-mandarina); border-color: transparent; }
+.pilar.p-ordenar { background: var(--t-verde); border-color: transparent; }
+.pilar.p-facturar { background: var(--blanco); }
+.pilar.p-crecer { background: var(--t-uva); border-color: transparent; }
+.pilar.p-consejos { background: var(--blanco); }
+
+/* ---------- Post 1080×1350 a escala ---------- */
+/* Todo se mide en "px del lienzo": --u = 1 px de 1080. */
+.post { container-type: inline-size; width: 100%; aspect-ratio: 4 / 5; border-radius: 6px; overflow: hidden; position: relative; }
+.post-in { --u: calc(100cqw / 1080); position: absolute; inset: 0; padding: calc(var(--u) * 96) calc(var(--u) * 88) calc(var(--u) * 88); display: flex; flex-direction: column; }
+.post .etq { align-self: flex-start; font-family: var(--f-texto); font-weight: 600; font-size: calc(var(--u) * 28); line-height: 1; padding: calc(var(--u) * 16) calc(var(--u) * 28); border-radius: var(--r-pill); letter-spacing: .02em; }
+.post .tit { font-family: var(--f-titular); font-weight: 800; font-size: calc(var(--u) * 104); line-height: 0.98; letter-spacing: -0.035em; margin-top: calc(var(--u) * 56); text-wrap: balance; }
+.post .apoyo { font-family: var(--f-texto); font-weight: 400; font-size: calc(var(--u) * 40); line-height: 1.4; margin-top: calc(var(--u) * 36); max-width: calc(var(--u) * 640); }
+.post .cifra { font-family: var(--f-titular); font-weight: 800; font-size: calc(var(--u) * 520); line-height: .82; letter-spacing: -0.05em; margin-top: calc(var(--u) * 40); }
+.post .cifra + .tit { margin-top: calc(var(--u) * 8); }
+.post .cta { align-self: flex-start; margin-top: calc(var(--u) * 44); font-family: var(--f-texto); font-weight: 600; font-size: calc(var(--u) * 32); padding: calc(var(--u) * 24) calc(var(--u) * 44); border-radius: var(--r-pill); line-height: 1; }
+.post .pie { margin-top: auto; display: flex; align-items: flex-end; }
+.post .pie .logo span { font-size: calc(var(--u) * 46) !important; }
+.post .pie .logo svg { width: calc(var(--u) * 54); height: calc(var(--u) * 54); }
+.post .pie .logo { gap: calc(var(--u) * 14) !important; }
+.post .masc { position: absolute; right: calc(var(--u) * 96); bottom: calc(var(--u) * 92); width: calc(var(--u) * 330); }
+.post .masc svg { width: 100%; height: auto; }
+.post .tarjeta-k { position: absolute; right: calc(var(--u) * 88); bottom: calc(var(--u) * 88); width: calc(var(--u) * 420); aspect-ratio: 1; background: var(--blanco); border-radius: calc(var(--u) * 48); display: grid; place-items: center; }
+.post .tarjeta-k svg { width: 66%; height: auto; }
+.post .contador { position: absolute; top: calc(var(--u) * 96); right: calc(var(--u) * 88); font-family: var(--f-texto); font-weight: 600; font-size: calc(var(--u) * 28); }
+
+.bg-P { background: var(--profundo); color: var(--blanco); }
+.bg-P .apoyo { color: var(--suave); }
+.bg-P .etq { background: var(--verde); color: var(--blanco); }
+.bg-P .cta { background: var(--mandarina); color: var(--profundo); }
+.bg-C { background: var(--crema); color: var(--profundo); }
+.bg-B { background: var(--blanco); color: var(--profundo); box-shadow: inset 0 0 0 1px var(--linea); }
+.bg-C .apoyo, .bg-B .apoyo { color: var(--gris); }
+.bg-C .cta, .bg-B .cta { background: var(--verde); color: var(--blanco); }
+.bg-M { background: var(--mandarina); color: var(--profundo); }
+.bg-M .etq { background: var(--profundo); color: var(--blanco); }
+.bg-M .cta { background: var(--profundo); color: var(--blanco); }
+.bg-U { background: var(--uva); color: var(--blanco); }
+.bg-U .apoyo { color: var(--t-uva); }
+.bg-U .etq { background: var(--blanco); color: var(--uva); }
+.etq.e-abrir { background: var(--t-mandarina); color: var(--profundo); }
+.etq.e-ordenar { background: var(--t-verde); color: var(--profundo); }
+.etq.e-facturar { background: var(--profundo); color: var(--blanco); }
+.etq.e-crecer { background: var(--t-uva); color: var(--profundo); }
+.etq.e-consejos { background: var(--t-verde); color: var(--profundo); }
+
+/* ---------- Parrilla ---------- */
+.parrilla-wrap { display: grid; grid-template-columns: minmax(0, 420px) minmax(0, 1fr); gap: 40px; align-items: start; }
+.feed { background: var(--blanco); border-radius: 22px; padding: 14px; border: 1px solid var(--linea); position: sticky; top: calc(env(safe-area-inset-top, 0px) + 16px); }
+.feed .perfil { display: flex; align-items: center; gap: 12px; padding: 6px 4px 14px; }
+.feed .avatar { width: 54px; height: 54px; border-radius: 50%; background: var(--profundo); display: grid; place-items: center; flex: none; }
+.feed .perfil b { font-size: 14px; display: block; }
+.feed .perfil small { color: var(--gris); font-size: 12px; line-height: 1.35; display: block; }
+.feed-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 3px; }
+.feed-grid .celda { position: relative; aspect-ratio: 3 / 4; overflow: hidden; }
+.feed-grid .celda .post { position: absolute; left: 0; right: 0; top: 50%; transform: translateY(-50%); border-radius: 0; }
+.feed-grid .num { position: absolute; top: 4px; left: 4px; z-index: 2; background: rgba(10,43,44,.82); color: var(--blanco); font-size: 10px; font-weight: 600; padding: 1px 6px; border-radius: 999px; }
+.feed .nota { font-size: 12px; color: var(--gris); margin-top: 12px; line-height: 1.45; }
+.tabla-wrap { overflow-x: auto; border-radius: var(--r-tarjeta); border: 1px solid var(--linea); background: var(--blanco); }
+table { border-collapse: collapse; width: 100%; font-size: 14px; min-width: 640px; }
+th, td { text-align: left; padding: 11px 14px; border-bottom: 1px solid var(--linea); vertical-align: top; }
+th { font-size: 12px; text-transform: uppercase; letter-spacing: .05em; color: var(--gris); font-weight: 600; background: var(--crema); }
+tr:last-child td { border-bottom: 0; }
+td.n { font-variant-numeric: tabular-nums; font-weight: 600; color: var(--gris); }
+td .tt { font-family: var(--f-titular); font-weight: 700; letter-spacing: -0.02em; font-size: 15px; }
+.semana td { background: var(--t-verde); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--verde); padding-block: 7px; }
+.reglas-feed { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 20px; }
+.regla { background: var(--blanco); border: 1px solid var(--linea); border-radius: 12px; padding: 14px 16px; font-size: 14px; }
+.regla b { display: block; font-family: var(--f-titular); font-size: 16px; letter-spacing: -0.02em; margin-bottom: 2px; }
+.barra-ritmo { display: flex; height: 14px; border-radius: 999px; overflow: hidden; margin-top: 8px; }
+@media (max-width: 860px) {
+  .parrilla-wrap { grid-template-columns: 1fr; }
+  .feed { position: static; max-width: 440px; }
+}
+
+/* ---------- Anatomía ---------- */
+.anatomia { display: grid; grid-template-columns: minmax(0, 480px) minmax(0, 1fr); gap: 44px; align-items: start; }
+.guias .post-in { outline: 0; }
+.guias .margen { position: absolute; inset: 0; pointer-events: none; }
+.guias .margen::before { content: ""; position: absolute; left: calc(var(--u) * 88); right: calc(var(--u) * 88); top: calc(var(--u) * 96); bottom: calc(var(--u) * 88); border: 1.5px dashed rgba(255,255,255,.5); border-radius: 2px; }
+.guias .marca { position: absolute; width: 24px; height: 24px; border-radius: 50%; background: var(--mandarina); color: var(--profundo); font-weight: 700; font-size: 12px; display: grid; place-items: center; z-index: 3; box-shadow: 0 0 0 3px var(--profundo); }
+.guias .zona { position: absolute; border: 1.5px dashed var(--mandarina); border-radius: 4px; }
+.spec { display: grid; gap: 0; counter-reset: s; }
+.spec li { list-style: none; display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--linea); }
+.spec li:first-child { padding-top: 0; }
+.spec .k { width: 24px; height: 24px; border-radius: 50%; background: var(--mandarina); color: var(--profundo); font-weight: 700; font-size: 12px; display: grid; place-items: center; margin-top: 1px; }
+.spec b { font-family: var(--f-titular); font-size: 17px; letter-spacing: -0.02em; display: block; }
+.spec span { color: var(--gris); font-size: 14px; }
+.spec ul { margin: 0; padding: 0; }
+@media (max-width: 860px) { .anatomia { grid-template-columns: 1fr; } .anatomia > .post { max-width: 480px; } }
+
+/* ---------- Variantes ---------- */
+.variantes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.variante { display: grid; gap: 12px; align-content: start; }
+.variante h4 { margin-top: 4px; }
+.variante p { font-size: 14px; color: var(--gris); }
+.variante .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+@media (max-width: 860px) { .variantes { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .variantes { grid-template-columns: 1fr; } .variante .post { max-width: 360px; } }
+
+/* ---------- Copys ---------- */
+.copys { display: grid; gap: 28px; }
+.copy { display: grid; grid-template-columns: minmax(0, 340px) minmax(0, 1fr); gap: 32px; background: var(--blanco); border-radius: 20px; padding: 24px; border: 1px solid var(--linea); }
+.copy .texto { display: grid; gap: 16px; align-content: start; min-width: 0; }
+.copy .caption { background: var(--crema); border-radius: 12px; padding: 16px 18px; font-size: 15px; white-space: pre-line; }
+.copy .caption .hash { color: var(--verde); font-weight: 500; }
+.copy .comparar { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 14px; }
+.copy .no, .copy .si { border-radius: 10px; padding: 10px 12px; }
+.copy .no { background: var(--crema); color: var(--gris); text-decoration: line-through; text-decoration-color: rgba(77,94,92,.5); }
+.copy .si { background: var(--t-verde); }
+.copy .no small, .copy .si small { display: block; text-decoration: none; font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 2px; }
+.copy .si small { color: var(--verde); }
+.copy .porque { font-size: 14px; color: var(--gris); }
+.copy .porque b { color: var(--profundo); }
+@media (max-width: 760px) { .copy { grid-template-columns: 1fr; } .copy .post { max-width: 340px; } .copy .comparar { grid-template-columns: 1fr; } }
+
+/* ---------- Landing ---------- */
+.mapa { display: grid; grid-template-columns: minmax(0, 200px) minmax(0, 1fr); gap: 28px; align-items: start; }
+.mapa .disp { display: grid; gap: 8px; }
+.mapa .disp > small { font-weight: 600; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--suave); }
+.mapa .marco { border: 2px solid rgba(255,255,255,.25); border-radius: 22px; padding: 8px; display: grid; gap: 4px; }
+.mapa .escritorio .marco { border-radius: 12px; }
+.mapa .s { border-radius: 6px; padding: 8px 10px; font-size: 11px; font-weight: 600; display: flex; align-items: center; justify-content: space-between; gap: 6px; }
+.mapa .s em { font-style: normal; font-weight: 400; opacity: .75; }
+.mapa .fila { display: grid; gap: 4px; }
+.sec-landing { display: grid; gap: 18px; }
+.sec { background: var(--blanco); border-radius: 20px; border: 1px solid var(--linea); overflow: hidden; }
+.sec .encabezado { display: flex; gap: 16px; align-items: center; padding: 20px 24px; border-bottom: 1px solid var(--linea); flex-wrap: wrap; }
+.sec .encabezado .n { font-family: var(--f-titular); font-weight: 800; font-size: 40px; letter-spacing: -0.04em; line-height: 1; color: var(--verde); }
+.sec .encabezado h3 { flex: 1 1 260px; }
+.sec .cuerpo { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.sec .col { padding: 20px 24px; display: grid; gap: 10px; align-content: start; border-right: 1px solid var(--linea); min-width: 0; font-size: 14.5px; }
+.sec .col:last-child { border-right: 0; }
+.sec .col h4 { font-size: 13px; font-family: var(--f-texto); font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--gris); }
+.sec .col ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; }
+.sec .cita { font-family: var(--f-titular); font-weight: 800; font-size: 26px; letter-spacing: -0.03em; line-height: 1.02; }
+.sec .muestra { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.btn { display: inline-flex; align-items: center; justify-content: center; font-family: var(--f-texto); font-weight: 600; font-size: 15px; border-radius: var(--r-pill); padding: 12px 22px; border: 0; text-decoration: none; line-height: 1; }
+.btn-m { background: var(--mandarina); color: var(--profundo); }
+.btn-v { background: var(--verde); color: var(--blanco); }
+.btn-o { background: transparent; color: var(--verde); box-shadow: inset 0 0 0 2px var(--verde); }
+.sec .masc-fila { display: flex; gap: 6px; align-items: flex-end; }
+@media (max-width: 860px) {
+  .sec .cuerpo { grid-template-columns: 1fr; }
+  .sec .col { border-right: 0; border-bottom: 1px solid var(--linea); }
+  .sec .col:last-child { border-bottom: 0; }
+  .mapa { grid-template-columns: minmax(0, 1fr); }
+  .mapa .movil { max-width: 220px; }
+}
+
+.prototipo { display: flex; gap: 20px; align-items: center; justify-content: space-between; flex-wrap: wrap; background: var(--t-verde); border-radius: 20px; padding: 24px; margin-top: 28px; }
+.prototipo p { max-width: 60ch; }
+
+/* ---------- Reglas ---------- */
+.prohibidos { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
+.prohibido { background: var(--blanco); border-radius: 14px; padding: 18px; border: 1px solid var(--linea); display: grid; gap: 6px; align-content: start; }
+.prohibido .q { font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--gris); }
+.prohibido b { font-family: var(--f-titular); font-size: 18px; letter-spacing: -0.02em; line-height: 1.15; }
+.prohibido p { font-size: 14px; color: var(--gris); }
+.checklist { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 8px 28px; margin-top: 28px; padding: 0; }
+.checklist li { list-style: none; display: flex; gap: 10px; font-size: 15px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,.14); }
+.checklist li::before { content: ""; flex: none; width: 18px; height: 18px; border-radius: 5px; border: 2px solid var(--mandarina); margin-top: 2px; }
+
+footer.pie-doc { background: var(--profundo); color: var(--suave); padding-block: 32px; font-size: 13px; }
+footer.pie-doc .envoltura { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .indice a, .btn { transition: border-color .15s, transform .15s; }
+}
+</style>
+
+<header class="portada">
+  <div class="envoltura">
+    <div class="barra">
+      <span data-logo="negativo" data-size="30"></span>
+      <span class="ref">Aplicación del Manual de marca v2 · Octubre 2026 · Uso interno y agencias</span>
+    </div>
+    <div class="cuerpo">
+      <div>
+        <p class="eyebrow">Redes sociales y landing page</p>
+        <h1 style="margin-top:14px">Crece sin complicarte, también en pantalla.</h1>
+        <p class="lead">Estrategia de contenido, plantillas 1080×1350 y la estructura responsiva de la landing. Todo sale del manual: paleta, Albert Sans y Public Sans, reglas del logo, las cuatro mascotas y el tono de mostrador.</p>
+        <nav class="indice" aria-label="Contenido">
+          <a href="#pilares">1 · Pilares</a>
+          <a href="#parrilla">Parrilla</a>
+          <a href="#plantillas">Plantillas</a>
+          <a href="#copys">Copys</a>
+          <a href="#landing">2 · Landing</a>
+          <a href="#reglas">Reglas</a>
+        </nav>
+      </div>
+      <div class="duo" aria-hidden="true">
+        <span data-mascota="nuvi" data-pose="wave" data-face="smile" data-size="150"></span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- =================== PASO 1 · REDES =================== -->
+<section class="bloque" id="pilares">
+  <div class="envoltura">
+    <div class="cabeza">
+      <span class="paso"><b>1</b> Redes sociales · Estrategia de contenido</span>
+      <h2>Cinco pilares: uno por fase, más los consejos.</h2>
+      <p class="lead">Cada pilar tiene dueña o dueño: la mascota de su fase. Los consejos generales los da Nuvi, que es la anfitriona de la marca y la cara del soporte. Así el feed se lee como el mismo camino que hace el cliente.</p>
+    </div>
+    <div class="pilares">
+      <article class="pilar p-abrir">
+        <div class="top"><div><p class="fase">Fase 1</p><h3>Abrir</h3></div><span data-mascota="nuvi" data-pose="wave" data-size="84"></span></div>
+        <dl>
+          <div><dt>Para qué</dt><dd>Quitar el miedo a empezar. Primera venta, primer corte de caja, cómo se ve la caja.</dd></div>
+          <div><dt>Formatos</dt><dd>Reel corto de "así se cobra", tip con Nuvi, carrusel de primeros pasos.</dd></div>
+          <div><dt>Fondo</dt><dd><span class="chip"><i style="background:var(--profundo)"></i>Profundo</span> <span class="chip"><i style="background:var(--crema)"></i>Crema</span></dd></div>
+        </dl>
+      </article>
+      <article class="pilar p-ordenar">
+        <div class="top"><div><p class="fase">Fase 2</p><h3>Ordenar</h3></div><span data-mascota="vora" data-pose="point" data-size="84"></span></div>
+        <dl>
+          <div><dt>Para qué</dt><dd>Inventario sin estrés: saber cuánto queda y pedir a tiempo.</dd></div>
+          <div><dt>Formatos</dt><dd>Carrusel "en 3 pasos", alertas de producto bajo como ejemplo, antes y después de la bodega.</dd></div>
+          <div><dt>Fondo</dt><dd><span class="chip"><i style="background:var(--blanco)"></i>Blanco</span> <span class="chip"><i style="background:var(--crema)"></i>Crema</span></dd></div>
+        </dl>
+      </article>
+      <article class="pilar p-facturar">
+        <div class="top"><div><p class="fase">Fase 3</p><h3>Facturar</h3></div><span data-mascota="rumi" data-pose="hips" data-face="calm" data-size="84"></span></div>
+        <dl>
+          <div><dt>Para qué</dt><dd>Resolver dudas del SAT en palabras normales. Facturar desde el ticket, a la primera.</dd></div>
+          <div><dt>Formatos</dt><dd>Carrusel de datos que pedir, "pregúntale a Rumi", mitos y verdades de la factura.</dd></div>
+          <div><dt>Fondo</dt><dd><span class="chip"><i style="background:var(--crema)"></i>Crema</span> <span class="chip"><i style="background:var(--blanco)"></i>Blanco</span> <small style="color:var(--gris)">Rumi es profundo: nunca va sobre profundo.</small></dd></div>
+        </dl>
+      </article>
+      <article class="pilar p-crecer">
+        <div class="top"><div><p class="fase">Fase 4</p><h3>Crecer</h3></div><span data-mascota="kora" data-pose="cheer" data-face="happy" data-size="84"></span></div>
+        <dl>
+          <div><dt>Para qué</dt><dd>Mostrar el siguiente paso: sucursales, lealtad, pagos con tarjeta. Celebrar metas.</dd></div>
+          <div><dt>Formatos</dt><dd>Lanzamientos de módulo, logros, "¿y si abrimos otra?".</dd></div>
+          <div><dt>Fondo</dt><dd><span class="chip"><i style="background:var(--blanco)"></i>Blanco</span> <span class="chip"><i style="background:var(--uva)"></i>Uva, solo lanzamiento</span></dd></div>
+        </dl>
+      </article>
+      <article class="pilar p-consejos">
+        <div class="top"><div><p class="fase">Transversal</p><h3>Consejos</h3></div><span data-mascota="nuvi" data-pose="point" data-face="wink" data-size="84"></span></div>
+        <dl>
+          <div><dt>Para qué</dt><dd>Tips de negocio, datos rápidos y piezas por giro (tienditas, fondas, boutiques, salones).</dd></div>
+          <div><dt>Formatos</dt><dd>Dato con cifra enorme sin personaje, pieza por giro en mandarina, tip con Nuvi.</dd></div>
+          <div><dt>Fondo</dt><dd><span class="chip"><i style="background:var(--crema)"></i>Crema</span> <span class="chip"><i style="background:var(--mandarina)"></i>Mandarina 1 de 5</span> <span class="chip"><i style="background:var(--profundo)"></i>Profundo</span></dd></div>
+        </dl>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="bloque blanco" id="parrilla">
+  <div class="envoltura">
+    <div class="cabeza">
+      <p class="eyebrow">Parrilla inicial · 4 semanas · lunes, miércoles y viernes</p>
+      <h2>Doce publicaciones con el ritmo del manual.</h2>
+      <p class="lead">Profundo, crema y blanco se alternan; la mandarina cae justo una de cada cinco (publicaciones 5 y 10) y el uva aparece una sola vez, para el lanzamiento. En la cuadrícula del perfil ningún color se repite al lado ni encima de sí mismo.</p>
+    </div>
+    <div class="parrilla-wrap">
+      <div class="feed" aria-label="Vista previa del perfil de Instagram">
+        <div class="perfil">
+          <span class="avatar" data-simbolo="negativo" data-size="30"></span>
+          <div><b>nuvora.mx</b><small>Punto de venta modular para negocios en México. Crece sin complicarte.</small></div>
+        </div>
+        <div class="feed-grid" id="feed"></div>
+        <p class="nota">Orden de lectura: de izquierda a derecha y de arriba abajo. Instagram muestra lo más nuevo arriba, así que se publica del 1 al 12 y el perfil queda volteado sin romper la alternancia. La cuadrícula recorta los 4:5 a 3:4; por eso los márgenes laterales del lienzo son de 88 px.</p>
+      </div>
+      <div style="min-width:0">
+        <div class="tabla-wrap">
+          <table>
+            <thead><tr><th>#</th><th>Pilar</th><th>Formato</th><th>Fondo</th><th>Mascota</th><th>Titular</th></tr></thead>
+            <tbody id="tabla"></tbody>
+          </table>
+        </div>
+        <div class="reglas-feed">
+          <div class="regla"><b>Mezcla de color</b>Meta del manual: profundo 40 %, crema 35 %, verde 13 %, mandarina 8 %, uva 4 %.
+            <div class="barra-ritmo" aria-hidden="true"><span style="flex:40;background:var(--profundo)"></span><span style="flex:35;background:var(--crema)"></span><span style="flex:13;background:var(--verde)"></span><span style="flex:8;background:var(--mandarina)"></span><span style="flex:4;background:var(--uva)"></span></div>
+          </div>
+          <div class="regla"><b>Hashtags</b>#Nuvora #CreceSinComplicarte #PuntoDeVenta y hasta dos del tema. Máximo cinco.</div>
+          <div class="regla"><b>Avatar</b>Símbolo blanco sobre profundo. Nunca una mascota como avatar.</div>
+          <div class="regla"><b>Una mascota, un mensaje</b>Máximo dos por pieza. En piezas de fase manda la de esa fase; en generales, Nuvi es la más grande.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bloque" id="plantillas">
+  <div class="envoltura">
+    <div class="cabeza">
+      <p class="eyebrow">Estructura visual · 1080 × 1350 px</p>
+      <h2>Una retícula para todas las piezas.</h2>
+      <p class="lead">El orden nunca cambia: etiqueta, titular, apoyo, botón si hace falta, logo abajo a la izquierda y mascota abajo a la derecha. Lo que cambia es el fondo, y el fondo decide los colores de todo lo demás.</p>
+    </div>
+    <div class="anatomia">
+      <div class="post bg-P guias" id="anatomia"></div>
+      <ol class="spec">
+        <li><span class="k">1</span><div><b>Margen seguro</b><span>88 px a los lados, 96 px arriba y 88 px abajo. Nada importante fuera de ese recuadro; la cuadrícula del perfil recorta los lados.</span></div></li>
+        <li><span class="k">2</span><div><b>Etiqueta</b><span>Public Sans 600 · 28 px · esquinas completamente redondas. Dice qué tipo de pieza es: Tip, Dato, Nuevo módulo, Para tienditas, Fase 2 · Ordenar.</span></div></li>
+        <li><span class="k">3</span><div><b>Titular</b><span>Albert Sans 800 · 96–120 px (104 px de base) · tracking −3.5 % · interlineado 0.98. Máximo dos líneas y 12 palabras; en la práctica, unos 36 caracteres.</span></div></li>
+        <li><span class="k">4</span><div><b>Texto de apoyo</b><span>Public Sans 400 · 40 px · interlineado 1.4 · una o dos frases, ancho máximo 640 px para no chocar con la mascota.</span></div></li>
+        <li><span class="k">5</span><div><b>Botón (opcional)</b><span>Public Sans 600 · 32 px · alto 80 px. Mandarina con texto profundo sobre profundo; verde azulado con texto blanco sobre crema o blanco; profundo con texto blanco sobre mandarina.</span></div></li>
+        <li><span class="k">6</span><div><b>Logo</b><span>Horizontal, abajo a la izquierda, unos 240 px de ancho (mínimo 90 px). Negativo sobre profundo y uva; positivo sobre crema y blanco; sobre mandarina el módulo pasa a blanco. Área libre alrededor: la altura de un bloque.</span></div></li>
+        <li><span class="k">7</span><div><b>Mascota</b><span>Caja de 330 × 330 px abajo a la derecha, a 96 px del borde. Una por pieza (dos como máximo). Nunca entra al área de protección del logo ni lo toca.</span></div></li>
+      </ol>
+    </div>
+
+    <div class="cabeza" style="margin-top:72px">
+      <h3>Seis variantes, decididas por el fondo</h3>
+      <p class="lead">Estas son las mismas plantillas de la parrilla. Fíjate en las mascotas: cada una va sobre un fondo donde se distingue su color.</p>
+    </div>
+    <div class="variantes" id="variantes"></div>
+  </div>
+</section>
+
+<section class="bloque blanco" id="copys">
+  <div class="envoltura">
+    <div class="cabeza">
+      <p class="eyebrow">Copywriting y tono · "Hablamos como en el mostrador"</p>
+      <h2>Tres publicaciones listas para salir.</h2>
+      <p class="lead">De tú, primero tranquilizar, un paso a la vez y un futuro concreto. Cada ejemplo trae la pieza, el texto del post y la frase que evitamos.</p>
+    </div>
+    <div class="copys" id="lista-copys"></div>
+  </div>
+</section>
+
+<!-- =================== PASO 2 · LANDING =================== -->
+<section class="bloque oscuro" id="landing">
+  <div class="envoltura">
+    <div class="cabeza">
+      <span class="paso"><b>2</b> Landing page · Mobile first y escritorio</span>
+      <h2>Un scroll que sigue las cuatro fases.</h2>
+      <p class="lead">Se diseña primero a 375 px y se abre a 1280 px. En celular todo se apila en una columna y el botón principal queda fijo abajo; en escritorio las fases se ven lado a lado. Las mascotas aparecen como guías, una por sección, y Nuvi atiende el soporte en todo el recorrido.</p>
+    </div>
+    <div class="mapa">
+      <div class="disp movil">
+        <small>Celular · 375 px</small>
+        <div class="marco">
+          <div class="s" style="background:var(--profundo);box-shadow:inset 0 0 0 1px rgba(255,255,255,.2);color:var(--blanco)">Hero <em>Nuvi</em></div>
+          <div class="s" style="background:var(--crema);color:var(--profundo)">Fase 1 <em>Nuvi</em></div>
+          <div class="s" style="background:var(--crema);color:var(--profundo)">Fase 2 <em>Vora</em></div>
+          <div class="s" style="background:var(--crema);color:var(--profundo)">Fase 3 <em>Rumi</em></div>
+          <div class="s" style="background:var(--crema);color:var(--profundo)">Fase 4 <em>Kora</em></div>
+          <div class="s" style="background:var(--blanco);color:var(--profundo)">Precios <em>Rumi</em></div>
+          <div class="s" style="background:var(--t-verde);color:var(--profundo)">Así de fácil <em>Nuvi + Kora</em></div>
+          <div class="s" style="background:var(--profundo);box-shadow:inset 0 0 0 1px rgba(255,255,255,.2);color:var(--blanco)">Footer</div>
+          <div class="s" style="background:var(--mandarina);color:var(--profundo)">Botón fijo <em>Empieza gratis</em></div>
+        </div>
+      </div>
+      <div class="disp escritorio">
+        <small>Escritorio · 1280 px</small>
+        <div class="marco">
+          <div class="s" style="background:var(--profundo);box-shadow:inset 0 0 0 1px rgba(255,255,255,.2);color:var(--blanco);min-height:64px">Hero: texto a la izquierda, Nuvi saludando a la derecha <em>CTA mandarina</em></div>
+          <div class="fila" style="grid-template-columns:repeat(4,1fr)">
+            <div class="s" style="background:var(--t-mandarina);color:var(--profundo);min-height:56px">1 Abrir</div>
+            <div class="s" style="background:var(--t-verde);color:var(--profundo)">2 Ordenar</div>
+            <div class="s" style="background:var(--crema);color:var(--profundo)">3 Facturar</div>
+            <div class="s" style="background:var(--t-uva);color:var(--profundo)">4 Crecer</div>
+          </div>
+          <div class="fila" style="grid-template-columns:3fr 2fr">
+            <div class="s" style="background:var(--blanco);color:var(--profundo);min-height:56px">Cotizador por fases</div>
+            <div class="s" style="background:var(--mandarina);color:var(--profundo)">Total al mes con IVA</div>
+          </div>
+          <div class="s" style="background:var(--t-verde);color:var(--profundo)">Así de fácil: 3 pasos + compromisos <em>Nuvi + Kora</em></div>
+          <div class="s" style="background:var(--profundo);box-shadow:inset 0 0 0 1px rgba(255,255,255,.2);color:var(--blanco)">Footer: logo negativo, links, firma</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bloque">
+  <div class="envoltura sec-landing">
+
+    <article class="sec">
+      <div class="encabezado"><span class="n">01</span><h3>Header y hero</h3><div class="masc-fila"><span data-mascota="nuvi" data-pose="wave" data-size="64"></span></div></div>
+      <div class="cuerpo">
+        <div class="col">
+          <h4>Mensaje</h4>
+          <p class="cita">Crece sin complicarte.</p>
+          <p>Slogan recomendado del manual como H1. Debajo, la propuesta de valor: <b>"Un punto de venta que empieza cobrando y crece contigo. Inventario, facturas y sucursales, cuando las necesites."</b></p>
+          <p>Línea de confianza bajo los botones: "Activamos tu cuenta en 24 horas · Sin plazo forzoso · Te respondemos en menos de 5 minutos".</p>
+        </div>
+        <div class="col">
+          <h4>Botones y color</h4>
+          <div class="muestra" style="background:var(--profundo);padding:14px;border-radius:12px"><span class="btn btn-m">Empieza gratis 14 días</span><span class="btn" style="color:var(--blanco);box-shadow:inset 0 0 0 2px rgba(255,255,255,.5)">Ver precios</span></div>
+          <ul>
+            <li>Fondo profundo, titular blanco, apoyo en #BCD0CB.</li>
+            <li>CTA principal en mandarina con texto profundo: es "lo que agregas", el único botón mandarina de la pantalla.</li>
+            <li>Secundario en contorno blanco. Nunca texto mandarina sobre blanco o crema.</li>
+            <li>Header: logo negativo a la izquierda; Fases, Precios, Ayuda y "Entrar" a la derecha.</li>
+          </ul>
+        </div>
+        <div class="col">
+          <h4>Mobile y escritorio</h4>
+          <ul>
+            <li><b>375 px:</b> menú en botón "Menú"; Nuvi de 120 px arriba del titular, saludando; titular 44 px; botones a todo lo ancho, apilados.</li>
+            <li>Al pasar el hero, el CTA mandarina queda fijo abajo (altura 56 px + zona segura del teléfono).</li>
+            <li><b>1280 px:</b> dos columnas 7/5; Nuvi de 280 px a la derecha junto a una tarjeta de venta de ejemplo; titular 88 px.</li>
+            <li>El logo y Nuvi nunca se tocan: Nuvi vive en el cuerpo del hero, no en el header.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <article class="sec">
+      <div class="encabezado"><span class="n">02</span><h3>Fases de crecimiento y módulos</h3><div class="masc-fila"><span data-mascota="nuvi" data-size="46"></span><span data-mascota="vora" data-size="46"></span><span data-mascota="rumi" data-face="calm" data-size="46"></span><span data-mascota="kora" data-size="46"></span></div></div>
+      <div class="cuerpo">
+        <div class="col">
+          <h4>Mensaje</h4>
+          <p class="cita">Tu negocio crece por fases, a tu ritmo.</p>
+          <p>Apoyo: "Es un camino, no un plan cerrado. Te quedas en la fase que quieras o te saltas una."</p>
+          <p>Cada fase dice qué gana el negocio, no cómo funciona el sistema: "Empiezas a cobrar el mismo día", "Te avisa antes de que se acabe".</p>
+        </div>
+        <div class="col">
+          <h4>Tarjeta de fase</h4>
+          <ul>
+            <li>Número grande en Albert Sans 800, nombre "Fase 2 · Ordenar" (nunca "Plan Pro" ni "Premium").</li>
+            <li>Mascota de su fase y su tinte: Abrir tinte mandarina, Ordenar tinte verde, Facturar crema (Rumi es profundo), Crecer tinte uva.</li>
+            <li>Íconos de módulo de 24 px, trazo 2 px, en bloque de radio 12 px: tinte verde si es base, tinte mandarina si es módulo, tinte uva + "NUEVO" los primeros 90 días.</li>
+            <li>Precio de la fase en la tarjeta: $299, +$99, +$99, +$99 por módulo.</li>
+          </ul>
+        </div>
+        <div class="col">
+          <h4>Mobile y escritorio</h4>
+          <ul>
+            <li><b>375 px:</b> tarjetas apiladas en una columna, con la barra de cuatro segmentos fija arriba de la sección para marcar en qué fase vas.</li>
+            <li><b>1280 px:</b> cuatro columnas iguales, la barra encima de todas.</li>
+            <li>Esta es la única sección con las cuatro mascotas, cada una en su tarjeta, como en la página de fases del manual. Fuera de aquí, máximo dos por pantalla.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <article class="sec">
+      <div class="encabezado"><span class="n">03</span><h3>Precios y cotizador</h3><div class="masc-fila"><span data-mascota="rumi" data-pose="hips" data-face="calm" data-size="64"></span></div></div>
+      <div class="cuerpo">
+        <div class="col">
+          <h4>Mensaje</h4>
+          <p class="cita">Lo que ves es lo que pagas.</p>
+          <p>Rumi, el que revisa todo, acompaña los números: "Te lo sumo con IVA para que no haya sorpresas".</p>
+          <p>Cierre: "Activamos tu cuenta en 24 horas. Avanzas de fase cuando quieras."</p>
+        </div>
+        <div class="col">
+          <h4>Desglose sin letras chiquitas</h4>
+          <ul>
+            <li>Interruptor por fase. Fase 1 siempre activa; las demás se prenden o se apagan, y se puede saltar una.</li>
+            <li>Fase 4 con contador de módulos (Sucursales, Lealtad, Pagos) a +$99 cada uno.</li>
+            <li>Siempre a la vista: subtotal, IVA 16 % y <b>total al mes con IVA</b>. Ejemplo del manual: Fases 1–3 = $497 + $79.52 = $576.52.</li>
+            <li>Total en bloque mandarina con texto profundo. Precios en MXN, sin plazo forzoso, en texto normal de 15 px, no en nota al pie.</li>
+          </ul>
+        </div>
+        <div class="col">
+          <h4>Mobile y escritorio</h4>
+          <ul>
+            <li><b>375 px:</b> lista de fases con interruptores grandes (48 px de alto) y el total pegado abajo mientras se ajusta.</li>
+            <li><b>1280 px:</b> fases a la izquierda (3/5) y tarjeta de total a la derecha (2/5), fija al hacer scroll.</li>
+            <li>Botón del total: "Empezar con estas fases", verde azulado. La mandarina ya la usa el total.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <article class="sec">
+      <div class="encabezado"><span class="n">04</span><h3>Prueba social y mascotas como guías</h3><div class="masc-fila"><span data-mascota="nuvi" data-pose="point" data-size="64"></span><span data-mascota="kora" data-pose="cheer" data-face="happy" data-size="48"></span></div></div>
+      <div class="cuerpo">
+        <div class="col">
+          <h4>Mensaje</h4>
+          <p class="cita">Así de fácil se ve un día con Nuvora.</p>
+          <p>Tres pasos de la cotización del manual: "Elige tus fases", "Activamos tu cuenta en 24 horas", "Te acompañamos en tu primera venta".</p>
+          <p>Testimonios reales con foto del negocio, nombre, giro y ciudad, y solo con permiso. Mientras no los haya, se muestran compromisos verificables, no reseñas inventadas.</p>
+        </div>
+        <div class="col">
+          <h4>Mascotas en el scroll</h4>
+          <ul>
+            <li><b>Nuvi:</b> hero, primeros pasos y la burbuja fija "¿Te ayudo?" (soporte y errores siempre son de Nuvi).</li>
+            <li><b>Vora:</b> tarjeta de Ordenar: "Te quedan 3 refrescos. ¿Pedimos más?"</li>
+            <li><b>Rumi:</b> tarjeta de Facturar y el cotizador.</li>
+            <li><b>Kora:</b> tarjeta de Crecer y el cierre: "¿Y si abrimos otra?"</li>
+            <li>Una frase corta por mascota, de tú, sin tecnicismos. Nunca tristes, enojadas ni asustadas.</li>
+          </ul>
+        </div>
+        <div class="col">
+          <h4>Mobile y escritorio</h4>
+          <ul>
+            <li><b>375 px:</b> los tres pasos en lista vertical numerada; testimonios en carrusel horizontal con desplazamiento propio, sin mover la página.</li>
+            <li><b>1280 px:</b> pasos en tres columnas; testimonios en rejilla de tres.</li>
+            <li>Fondo tinte verde. Nuvi más grande que Kora en esta sección general (regla de dos mascotas).</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <article class="sec">
+      <div class="encabezado"><span class="n">05</span><h3>Footer</h3><div class="masc-fila" style="background:var(--profundo);padding:8px 12px;border-radius:10px"><span data-logo="negativo" data-size="20"></span></div></div>
+      <div class="cuerpo">
+        <div class="col">
+          <h4>Elementos de marca</h4>
+          <ul>
+            <li>Fondo profundo y logo negativo horizontal con su área de protección libre.</li>
+            <li>Slogan junto al logo: "Crece sin complicarte."</li>
+            <li>Sin mascotas. La burbuja de Nuvi flota encima, no forma parte del footer.</li>
+          </ul>
+        </div>
+        <div class="col">
+          <h4>Links clave</h4>
+          <ul>
+            <li><b>Producto:</b> Fases, Precios, Módulos, Para tu giro.</li>
+            <li><b>Ayuda:</b> Hablar con Nuvi, WhatsApp, Primeros pasos, Pide tu factura.</li>
+            <li><b>Legal:</b> Aviso de privacidad, Términos.</li>
+            <li>Contacto: hola o soporte @nuvora.mx (dirección por confirmar) y marca@nuvora.mx para agencias.</li>
+          </ul>
+        </div>
+        <div class="col">
+          <h4>Firma</h4>
+          <p class="cita" style="font-size:18px">© 2026 Nuvora · nuvora.mx · Crece sin complicarte.</p>
+          <ul>
+            <li>Misma firma de pie que la papelería y la cotización.</li>
+            <li><b>375 px:</b> grupos de links en acordeón; firma al final, centrada.</li>
+            <li><b>1280 px:</b> logo y slogan a la izquierda, tres columnas de links a la derecha, firma en una fila abajo.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <div class="prototipo">
+      <p><b>Prototipo funcional.</b> La landing está construida con esta estructura en <code>entregables/landing.html</code>: es responsiva y el cotizador suma de verdad con IVA. Ábrelo en el celular y en la compu para revisar los dos cortes.</p>
+      <a class="btn btn-v" id="link-prototipo" href="https://claude.ai/artifact/WSr1JyXEGn7d9Ws41cbEis">Abrir la landing</a>
+    </div>
+  </div>
+</section>
+
+<!-- =================== REGLAS =================== -->
+<section class="bloque oscuro" id="reglas">
+  <div class="envoltura">
+    <div class="cabeza">
+      <p class="eyebrow">Lo que el manual prohíbe, y cómo lo cuidamos aquí</p>
+      <h2>Reglas que no se rompen.</h2>
+    </div>
+    <div class="prohibidos" style="color:var(--profundo)">
+      <div class="prohibido"><span class="q">Logo</span><b>Nunca con cara.</b><p>Las mascotas viven aparte: ninguna pieza las coloca dentro del área de protección del logo ni las usa como logo. Logo y mascota siempre en esquinas opuestas.</p></div>
+      <div class="prohibido"><span class="q">Logo</span><b>Sin rotar, estirar, recolorear ni poner en mayúscula.</b><p>Siempre "nuvora" en minúsculas, Albert Sans Bold. Positivo solo sobre crema o blanco; en profundo, verde azulado y uva va el negativo.</p></div>
+      <div class="prohibido"><span class="q">Color</span><b>Nunca texto mandarina sobre blanco o crema.</b><p>La mandarina es fondo de botón o de dato, con texto profundo encima. Menos del 10 % de cada pieza.</p></div>
+      <div class="prohibido"><span class="q">Color</span><b>El uva solo de fondo en lanzamientos.</b><p>Un post de doce en la parrilla. En la landing, el uva solo marca "NUEVO" y la tarjeta de Fase 4 en su tinte.</p></div>
+      <div class="prohibido"><span class="q">Mascotas</span><b>Cada una sobre un fondo donde se vea.</b><p>Nuvi no va sobre mandarina, Rumi no va sobre profundo, Kora no va sobre uva: en el lanzamiento se para en una tarjeta blanca. Si no hay fondo que funcione, la pieza va sin mascota.</p></div>
+      <div class="prohibido"><span class="q">Mascotas</span><b>Planas, completas y de buen humor.</b><p>Sin sombras, contornos, degradados, texturas ni ropa. Nunca tristes, enojadas ni asustadas; en un error, Nuvi muestra la solución.</p></div>
+      <div class="prohibido"><span class="q">Mascotas</span><b>Máximo dos por pieza.</b><p>En piezas generales, Nuvi es la más grande. La única excepción es la presentación de las cuatro fases, como en la página de fases del manual.</p></div>
+      <div class="prohibido"><span class="q">Palabras</span><b>Nada de "Plan Pro", "Premium" ni "dashboard".</b><p>Decimos "Fase 2 · Ordenar", "Tus números del día", "Se guarda solo", "Primeros pasos". Precio siempre acumulado y con IVA a la vista.</p></div>
+    </div>
+    <ul class="checklist">
+      <li>Logo con área de protección y sin cara</li>
+      <li>Mandarina en menos del 10 %; uva solo como apoyo</li>
+      <li>Titular en Albert Sans 800, máximo 12 palabras</li>
+      <li>Cero tecnicismos: revisa "En lugar de… decimos"</li>
+      <li>Máximo dos personajes; Nuvi el más grande</li>
+      <li>Botones y etiquetas con esquinas completamente redondas</li>
+      <li>Contraste legible en celular a tamaño real</li>
+      <li>Precio mensual con IVA a la vista, sin letras chiquitas</li>
+    </ul>
+  </div>
+</section>
+
+<footer class="pie-doc">
+  <div class="envoltura">
+    <span data-logo="negativo" data-size="22"></span>
+    <span>Dudas sobre la marca: marca@nuvora.mx · Los precios son los de ejemplo del manual y se ajustan al tabulador real.</span>
+  </div>
+</footer>
+
+<script src="nuvora-kit.js"></script>
+<script>
+(function () {
+  var N = window.Nuvora;
+  /* Parrilla: publicación, pilar, formato, fondo, mascota y contenido de cada pieza. */
+  var POSTS = [
+    { n: 1, sem: 1, pilar: 'Abrir', e: 'abrir', fmt: 'Post', bg: 'P', m: 'nuvi', pose: 'wave', face: 'smile', etq: 'Crece sin complicarte', tit: 'Empieza cobrando hoy.', apoyo: 'Lo demás lo agregas cuando quieras.', cta: 'Prueba gratis 14 días' },
+    { n: 2, sem: 1, pilar: 'Consejos', e: 'consejos', fmt: 'Dato', bg: 'C', etq: 'Dato', cifra: '3', tit: 'toques para cobrar.' },
+    { n: 3, sem: 1, pilar: 'Ordenar', e: 'ordenar', fmt: 'Post', bg: 'B', m: 'vora', pose: 'point', face: 'smile', etq: 'Fase 2 · Ordenar', tit: 'Te quedan 3 refrescos. ¿Pedimos más?', apoyo: 'Vora te avisa antes de que se acabe.' },
+    { n: 4, sem: 2, pilar: 'Facturar', e: 'facturar', fmt: 'Post', bg: 'C', m: 'rumi', pose: 'hips', face: 'calm', etq: 'Fase 3 · Facturar', tit: '¿Te piden factura? Sale del ticket.', apoyo: 'Con el folio del ticket, en regla y a la primera.' },
+    { n: 5, sem: 2, pilar: 'Consejos', e: 'consejos', fmt: 'Por giro', bg: 'M', etq: 'Para tienditas', tit: 'Fiado con control, no con libreta.', apoyo: 'Quién debe, cuánto y desde cuándo.', cta: 'Prueba gratis 14 días' },
+    { n: 6, sem: 2, pilar: 'Abrir', e: 'abrir', fmt: 'Tip', bg: 'P', m: 'nuvi', pose: 'idle', face: 'wink', etq: 'Tip', tit: 'Haz tu corte de caja diario.', apoyo: 'Cinco minutos hoy te ahorran la sorpresa de fin de mes.' },
+    { n: 7, sem: 3, pilar: 'Crecer', e: 'crecer', fmt: 'Post', bg: 'B', m: 'kora', pose: 'cheer', face: 'happy', etq: 'Fase 4 · Crecer', tit: '¿Y si abrimos otra sucursal?', apoyo: 'El siguiente paso es más fácil de lo que parece.' },
+    { n: 8, sem: 3, pilar: 'Consejos', e: 'consejos', fmt: 'Tip', bg: 'P', m: 'nuvi', pose: 'point', face: 'smile', etq: '¿Sabías que…?', tit: 'Sin internet, sigues vendiendo.', apoyo: 'Se guarda solo y se sube cuando regrese la señal.' },
+    { n: 9, sem: 3, pilar: 'Ordenar', e: 'ordenar', fmt: 'Carrusel', bg: 'C', m: 'vora', pose: 'point', face: 'smile', etq: 'Fase 2 · Ordenar', tit: 'Ordena tu bodega en 3 pasos.', apoyo: 'Sin prisa y sin regaños. Desliza →' },
+    { n: 10, sem: 4, pilar: 'Consejos', e: 'consejos', fmt: 'Por giro', bg: 'M', etq: 'Para boutiques', tit: 'Sabes qué talla se vende más.', apoyo: 'Y cuál se queda en el aparador.', cta: 'Prueba gratis 14 días' },
+    { n: 11, sem: 4, pilar: 'Facturar', e: 'facturar', fmt: 'Carrusel', bg: 'B', m: 'rumi', pose: 'idle', face: 'smile', etq: 'Pregúntale a Rumi', tit: '5 datos para facturar a la primera.', apoyo: 'RFC, nombre, código postal, régimen y uso. Desliza →' },
+    { n: 12, sem: 4, pilar: 'Crecer', e: 'crecer', fmt: 'Lanzamiento', bg: 'U', m: 'kora', pose: 'cheer', face: 'happy', card: true, etq: 'NUEVO MÓDULO', tit: 'Todas tus tiendas en una pantalla.', apoyo: 'Sucursales: activa la segunda cuando quieras.' }
+  ];
+  var FONDO = { P: 'Profundo', C: 'Crema', B: 'Blanco', M: 'Mandarina', U: 'Uva' };
+  var LOGO = { P: 'negativo', U: 'negativo', C: 'positivo', B: 'positivo', M: 'mandarina' };
+
+  function esc(t) { return String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
+  function post(p, extra) {
+    var etqCls = (p.bg === 'C' || p.bg === 'B') ? ' e-' + p.e : '';
+    var h = '<div class="post bg-' + p.bg + (extra ? ' ' + extra : '') + '"><div class="post-in">';
+    h += '<span class="etq' + etqCls + '">' + esc(p.etq) + '</span>';
+    if (p.cifra) h += '<div class="cifra">' + p.cifra + '</div>';
+    h += '<div class="tit">' + esc(p.tit) + '</div>';
+    if (p.apoyo) h += '<p class="apoyo">' + esc(p.apoyo) + '</p>';
+    if (p.cta) h += '<span class="cta">' + esc(p.cta) + '</span>';
+    h += '<div class="pie">' + N.logo(LOGO[p.bg], 46) + '</div>';
+    if (p.m) {
+      var svg = N.mascota(p.m, { pose: p.pose, face: p.face, size: 300 });
+      h += p.card ? '<div class="tarjeta-k">' + svg + '</div>' : '<div class="masc">' + svg + '</div>';
+    }
+    return h + '</div></div>';
+  }
+
+  /* Feed */
+  document.getElementById('feed').innerHTML = POSTS.map(function (p) {
+    return '<div class="celda"><span class="num">' + p.n + '</span>' + post(p) + '</div>';
+  }).join('');
+
+  /* Tabla */
+  var filas = '', sem = 0;
+  POSTS.forEach(function (p) {
+    if (p.sem !== sem) { sem = p.sem; filas += '<tr class="semana"><td colspan="6">Semana ' + sem + '</td></tr>'; }
+    var dia = ['Lunes', 'Miércoles', 'Viernes'][(p.n - 1) % 3];
+    filas += '<tr><td class="n">' + p.n + '</td><td>' + p.pilar + '<br><small style="color:var(--gris)">' + dia + '</small></td><td>' + p.fmt + '</td><td>' + FONDO[p.bg] + '</td><td>' + (p.m ? p.m.charAt(0).toUpperCase() + p.m.slice(1) + (p.card ? ' en tarjeta blanca' : '') : '<span style="color:var(--gris)">Sin personaje</span>') + '</td><td><span class="tt">' + esc((p.cifra ? p.cifra + ' ' : '') + p.tit) + '</span></td></tr>';
+  });
+  document.getElementById('tabla').innerHTML = filas;
+
+  /* Anatomía con guías */
+  var an = document.getElementById('anatomia');
+  an.outerHTML = post(POSTS[0], 'guias').replace('<div class="post-in">', '<div class="post-in"><span class="margen"></span>');
+  var anat = document.querySelector('.anatomia > .post');
+  var pin = anat.querySelector('.post-in');
+  var marcas = [
+    ['1', 'calc(var(--u)*72)', 'calc(var(--u)*72)'],
+    ['2', 'calc(var(--u)*80)', 'calc(var(--u)*420)'],
+    ['3', 'calc(var(--u)*260)', 'calc(var(--u)*1010)'],
+    ['4', 'calc(var(--u)*520)', 'calc(var(--u)*700)'],
+    ['5', 'calc(var(--u)*640)', 'calc(var(--u)*600)'],
+    ['6', 'calc(var(--u)*1180)', 'calc(var(--u)*330)'],
+    ['7', 'calc(var(--u)*880)', 'calc(var(--u)*990)']
+  ];
+  marcas.forEach(function (m) {
+    var s = document.createElement('span');
+    s.className = 'marca'; s.textContent = m[0];
+    s.style.top = m[1]; s.style.left = m[2];
+    pin.appendChild(s);
+  });
+  var z1 = document.createElement('span'); z1.className = 'zona';
+  z1.style.cssText = 'right:calc(var(--u)*96);bottom:calc(var(--u)*92);width:calc(var(--u)*330);height:calc(var(--u)*330)';
+  pin.appendChild(z1);
+  var z2 = document.createElement('span'); z2.className = 'zona';
+  z2.style.cssText = 'left:calc(var(--u)*62);bottom:calc(var(--u)*62);width:calc(var(--u)*300);height:calc(var(--u)*106)';
+  pin.appendChild(z2);
+
+  /* Variantes */
+  var VAR = [
+    { p: POSTS[5], t: 'Tip · Profundo + Nuvi guiñando', d: 'Consejos rápidos. Titular blanco, etiqueta verde azulado, logo negativo.', c: ['Profundo', 'Nuvi', 'Logo negativo'] },
+    { p: POSTS[2], t: 'Fase · Blanco + mascota de la fase', d: 'Piezas de Ordenar, Facturar o Crecer. Etiqueta en el tinte de la fase y logo positivo.', c: ['Blanco', 'Vora', 'Tinte verde'] },
+    { p: POSTS[3], t: 'Facturar · Crema + Rumi', d: 'Rumi es profundo: siempre sobre crema o blanco. Etiqueta profundo con texto blanco.', c: ['Crema', 'Rumi', 'Logo positivo'] },
+    { p: POSTS[1], t: 'Dato · Crema, cifra enorme', d: 'Sin personaje. La cifra en Albert Sans 800 manda; el titular la completa.', c: ['Crema', 'Sin mascota'] },
+    { p: POSTS[4], t: 'Por giro · Mandarina, 1 de 5', d: 'Texto profundo, botón profundo y logo con el módulo en blanco. Sin mascota: Nuvi se perdería en su propio color.', c: ['Mandarina', 'Sin mascota', 'Módulo blanco'] },
+    { p: POSTS[11], t: 'Lanzamiento · Uva, único uso de fondo', d: 'Kora celebra sobre una tarjeta blanca para no fundirse con el uva. Etiqueta blanca con texto uva.', c: ['Uva', 'Kora en tarjeta', 'Logo negativo'] }
+  ];
+  document.getElementById('variantes').innerHTML = VAR.map(function (v) {
+    return '<div class="variante">' + post(v.p) + '<h4>' + v.t + '</h4><p>' + v.d + '</p><div class="chips">' + v.c.map(function (c) { return '<span class="chip">' + c + '</span>'; }).join('') + '</div></div>';
+  }).join('');
+
+  /* Copys */
+  var COPYS = [
+    {
+      p: { bg: 'P', e: 'abrir', m: 'nuvi', pose: 'wave', face: 'smile', etq: 'Fase 1 · Abrir', tit: 'Tu primera venta, hoy mismo.', apoyo: 'Te enseñamos paso a paso. Nadie nace sabiendo.', cta: 'Prueba gratis 14 días' },
+      t: 'Pilar Abrir · Nuvi · Lunes',
+      cap: '¿Te da miedo meterle sistema a tu negocio? No pasa nada, a todos nos pasó.\n\n1. Das de alta tus productos (o los escaneas).\n2. Le das "Cobrar".\n3. Listo, ya vendiste.\n\nSi te atoras, Nuvi te ayuda por WhatsApp. Te respondemos en menos de 5 minutos.\n\nPrueba gratis 14 días. El enlace está en la bio.',
+      hash: '#Nuvora #CreceSinComplicarte #PuntoDeVenta #Tiendita',
+      no: 'Implementa una solución POS en la nube con onboarding guiado para tu PyME.',
+      si: 'Tu primera venta, hoy mismo. Te enseñamos paso a paso.',
+      porque: '<b>Primero tranquilizar</b> ("No pasa nada") y <b>un paso a la vez</b> (tres pasos numerados). Habla de cobrar, no de "la nube".'
+    },
+    {
+      p: { bg: 'B', e: 'ordenar', m: 'vora', pose: 'point', face: 'smile', etq: 'Fase 2 · Ordenar', tit: 'Te quedan 3 refrescos. ¿Pedimos más?', apoyo: 'Vora cuenta tu inventario mientras atiendes.' },
+      t: 'Pilar Ordenar · Vora · Viernes',
+      cap: 'Llega el cliente, pide un refresco… y ya no hay. Esa venta se fue a la tienda de enfrente.\n\nCon Nuvora sabes cuánto te queda de cada producto. Cuando algo va bajando, Vora te avisa a tiempo para que lo pidas al proveedor.\n\nSin libretas y sin contar a mano el domingo.\n\nSe activa en un toque, cuando tú quieras: Fase 2 · Ordenar.',
+      hash: '#Nuvora #CreceSinComplicarte #Inventario #Abarrotes',
+      no: 'Stock crítico detectado en SKU 0042. Gestiona tus existencias en tiempo real.',
+      si: 'Te quedan 3 refrescos. ¿Pedimos más?',
+      porque: '<b>Español de México</b> y una escena de mostrador que cualquier tendero reconoce. Explica qué gana el negocio (no perder la venta), no cómo funciona el sistema.'
+    },
+    {
+      p: { bg: 'C', e: 'facturar', m: 'rumi', pose: 'hips', face: 'calm', etq: 'Pregúntale a Rumi', tit: '¿Te piden factura? Sale del ticket.', apoyo: 'En regla y a la primera. Sin entrar al portal del SAT.' },
+      t: 'Pilar Facturar · Rumi · Lunes',
+      cap: '"¿Me da factura?" Ya no tienes que decir "regrese mañana".\n\nCon el folio del ticket, tu cliente la pide o tú la sacas desde la misma caja. Rumi revisa los datos antes de timbrar: si falta el código postal, te lo dice en palabras normales.\n\nFacturación CFDI 4.0 con timbres incluidos. Es la Fase 3 · Facturar, y la activas cuando la necesites.',
+      hash: '#Nuvora #CreceSinComplicarte #Factura #CFDI',
+      no: 'CFDI40147: DomicilioFiscalReceptor no válido. Contacte al administrador.',
+      si: 'Falta el código postal del cliente. Con eso la timbramos.',
+      porque: '<b>Futuro concreto</b> (ya no dices "regrese mañana") y Rumi traduce el SAT. Términos que el dueño sí usa: factura, ticket, timbrar, CFDI.'
+    }
+  ];
+  document.getElementById('lista-copys').innerHTML = COPYS.map(function (c) {
+    return '<article class="copy">' + post(c.p) +
+      '<div class="texto"><p class="eyebrow">' + c.t + '</p>' +
+      '<div><h4 style="margin-bottom:8px">Texto del post</h4><div class="caption">' + esc(c.cap) + '\n\n<span class="hash">' + c.hash + '</span></div></div>' +
+      '<div class="comparar"><div class="no"><small>Así no</small>' + esc(c.no) + '</div><div class="si"><small>Así sí</small>' + esc(c.si) + '</div></div>' +
+      '<p class="porque">' + c.porque + '</p></div></article>';
+  }).join('');
+
+  N.pintar();
+})();
+</script>
