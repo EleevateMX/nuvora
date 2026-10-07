@@ -1,0 +1,619 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Punto de venta para negocios en México. Empieza cobrando y crece por fases: inventario, facturas y sucursales cuando las necesites.">
+<meta property="og:title" content="Nuvora · Crece sin complicarte.">
+<meta property="og:description" content="Punto de venta para negocios en México. Empieza cobrando y crece por fases: inventario, facturas y sucursales cuando las necesites.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 56 56%27%3E%3Crect x=%274%27 y=%274%27 width=%2722%27 height=%2722%27 rx=%276%27 fill=%27%230A2B2C%27/%3E%3Crect x=%2730%27 y=%274%27 width=%2722%27 height=%2722%27 rx=%276%27 fill=%27%230A2B2C%27/%3E%3Crect x=%274%27 y=%2730%27 width=%2722%27 height=%2722%27 rx=%276%27 fill=%27%230A2B2C%27/%3E%3Crect x=%2730%27 y=%2730%27 width=%2722%27 height=%2722%27 rx=%276%27 fill=%27%23FF8A3D%27/%3E%3C/svg%3E">
+<title>Nuvora Landing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@700;800&family=Public+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: mobile first, una columna a 375 px; se abre a dos y cuatro columnas desde 768 y 1024 px. Contenedor de 1200 px. */
+:root {
+  --profundo: #0A2B2C;
+  --verde: #157A6E;
+  --mandarina: #FF8A3D;
+  --uva: #5B3FB8;
+  --crema: #F3F4EE;
+  --blanco: #FFFFFF;
+  --gris: #4D5E5C;
+  --linea: #DEE2D9;
+  --t-verde: #E3F0EC;
+  --t-mandarina: #FFE8D8;
+  --t-uva: #ECE8F8;
+  --suave: #BCD0CB;
+  --f-titular: 'Albert Sans', Arial, sans-serif;
+  --f-texto: 'Public Sans', Arial, sans-serif;
+  --r-tarjeta: 16px;
+  --r-pill: 999px;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; background: var(--crema); color: var(--profundo); font-family: var(--f-texto); font-size: 16px; line-height: 1.55; }
+.contenedor { max-width: 1200px; margin: 0 auto; padding-inline: 20px; }
+h1, h2, h3 { font-family: var(--f-titular); font-weight: 800; letter-spacing: -0.03em; line-height: 0.98; margin: 0; text-wrap: balance; }
+h2 { font-size: clamp(34px, 6vw, 60px); }
+h3 { font-size: 26px; }
+p { margin: 0; }
+.etiqueta { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: 13px; letter-spacing: .04em; padding: 6px 14px; border-radius: var(--r-pill); }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 26px; border-radius: var(--r-pill); font-family: var(--f-texto); font-weight: 600; font-size: 16px; text-decoration: none; border: 0; cursor: pointer; line-height: 1; }
+.btn-m { background: var(--mandarina); color: var(--profundo); }
+.btn-v { background: var(--verde); color: var(--blanco); }
+.btn-claro { background: transparent; color: var(--blanco); box-shadow: inset 0 0 0 2px rgba(255,255,255,.55); }
+.btn:hover { filter: brightness(1.04); }
+a:focus-visible, button:focus-visible, input:focus-visible + .sw { outline: 3px solid var(--verde); outline-offset: 3px; }
+.oscuro a:focus-visible, .oscuro button:focus-visible { outline-color: var(--mandarina); }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.globo { position: relative; background: var(--blanco); color: var(--profundo); border-radius: 16px; padding: 10px 14px; font-weight: 600; font-size: 14px; line-height: 1.35; box-shadow: 0 0 0 1px var(--linea); }
+
+/* ---------- Header ---------- */
+.header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--profundo); color: var(--blanco); border-bottom: 1px solid rgba(255,255,255,.08); }
+.header .contenedor { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 16px; }
+.header nav { display: none; gap: 28px; align-items: center; }
+.header nav a { color: var(--blanco); text-decoration: none; font-weight: 500; font-size: 15px; }
+.header nav a:hover { color: var(--suave); }
+.header .acciones { display: flex; align-items: center; gap: 10px; }
+.header .entrar { color: var(--blanco); font-weight: 600; font-size: 15px; text-decoration: none; display: none; }
+.header .btn { min-height: 40px; padding: 0 18px; font-size: 14px; display: none; }
+.menu-btn { background: transparent; color: var(--blanco); border: 1.5px solid rgba(255,255,255,.35); border-radius: var(--r-pill); padding: 8px 16px; font: 600 14px var(--f-texto); cursor: pointer; }
+.menu-panel { background: var(--profundo); border-top: 1px solid rgba(255,255,255,.1); padding: 12px 20px 24px; display: grid; gap: 4px; }
+.menu-panel a { color: var(--blanco); text-decoration: none; font-weight: 600; font-size: 18px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,.08); }
+.menu-panel .btn { margin-top: 12px; border-bottom: 0; }
+@media (min-width: 900px) {
+  .header nav, .header .entrar, .header .btn { display: inline-flex; }
+  .menu-btn, .menu-panel { display: none !important; }
+}
+
+/* ---------- Hero ---------- */
+.hero { background: var(--profundo); color: var(--blanco); padding-block: 32px 56px; overflow: hidden; }
+.hero .grid { display: grid; gap: 28px; }
+.hero .nuvi-movil { display: flex; align-items: flex-end; gap: 12px; }
+.hero .nuvi-movil .globo { margin-bottom: 40px; }
+.hero .eyebrow { color: var(--mandarina); font-weight: 600; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; }
+.hero h1 { font-size: clamp(46px, 10vw, 92px); letter-spacing: -0.035em; line-height: 0.94; margin-top: 12px; }
+.hero .valor { font-size: 18px; color: var(--suave); margin-top: 18px; max-width: 34ch; }
+.hero .botones { display: grid; gap: 10px; margin-top: 28px; }
+.hero .confianza { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 20px; font-size: 14px; color: var(--suave); padding: 0; }
+.hero .confianza li { list-style: none; display: flex; align-items: center; gap: 6px; }
+.hero .confianza li::before { content: ""; width: 8px; height: 8px; border-radius: 3px; background: var(--verde); }
+.hero .escena { display: none; }
+.venta { background: var(--blanco); color: var(--profundo); border-radius: 20px; padding: 20px; width: 300px; font-variant-numeric: tabular-nums; }
+.venta .neg { font-weight: 600; font-size: 13px; color: var(--gris); }
+.venta .fila { display: flex; justify-content: space-between; font-size: 14px; padding: 7px 0; border-bottom: 1px solid var(--linea); }
+.venta .total { display: flex; justify-content: space-between; align-items: baseline; margin-top: 12px; font-family: var(--f-titular); font-weight: 800; font-size: 30px; letter-spacing: -0.03em; }
+.venta .cobrar { margin-top: 14px; width: 100%; background: var(--verde); color: var(--blanco); border-radius: var(--r-pill); text-align: center; padding: 12px; font-weight: 600; }
+@media (min-width: 560px) {
+  .hero .botones { grid-template-columns: auto auto; justify-content: start; }
+}
+@media (min-width: 1024px) {
+  .hero { padding-block: 72px 88px; }
+  .hero .grid { grid-template-columns: 7fr 5fr; align-items: center; gap: 40px; }
+  .hero .nuvi-movil { display: none; }
+  .hero .escena { display: grid; position: relative; justify-items: end; }
+  .hero .escena .nuvi { position: absolute; left: -10px; bottom: -28px; }
+  .hero .escena .globo { position: absolute; left: -30px; bottom: 196px; }
+  .hero .valor { font-size: 20px; }
+}
+
+/* ---------- Fases ---------- */
+.fases { padding-block: 64px; }
+.fases .cabeza { display: grid; gap: 14px; margin-bottom: 28px; }
+.fases .cabeza p { color: var(--gris); font-size: 18px; max-width: 56ch; }
+.segmentos { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 64px); z-index: 5; background: var(--crema); padding-block: 10px; display: grid; gap: 6px; }
+.segmentos .barra { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
+.segmentos .barra span { height: 8px; border-radius: 999px; background: var(--linea); transition: background .2s; }
+.segmentos .barra span.on:nth-child(1) { background: var(--mandarina); }
+.segmentos .barra span.on:nth-child(2) { background: var(--verde); }
+.segmentos .barra span.on:nth-child(3) { background: var(--profundo); }
+.segmentos .barra span.on:nth-child(4) { background: var(--uva); }
+.segmentos small { font-size: 13px; font-weight: 600; color: var(--gris); }
+.tarjetas { display: grid; gap: 16px; margin-top: 12px; }
+.fase { border-radius: 20px; padding: 22px; display: grid; gap: 14px; align-content: start; position: relative; }
+.fase.f1 { background: var(--t-mandarina); }
+.fase.f2 { background: var(--t-verde); }
+.fase.f3 { background: var(--blanco); box-shadow: inset 0 0 0 1px var(--linea); }
+.fase.f4 { background: var(--t-uva); }
+.fase .top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.fase .num { font-family: var(--f-titular); font-weight: 800; font-size: 72px; line-height: .8; letter-spacing: -0.05em; }
+.fase .nombre { font-size: 13px; font-weight: 600; letter-spacing: .04em; color: var(--gris); margin-top: 10px; }
+.fase h3 { font-size: 32px; }
+.fase .desc { font-size: 16px; }
+.fase .dice { font-family: var(--f-titular); font-weight: 700; font-size: 17px; letter-spacing: -0.02em; }
+.fase .dice::before { content: "“"; }
+.fase .dice::after { content: "”"; }
+.modulos { display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 0; }
+.modulos li { list-style: none; display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; background: rgba(255,255,255,.7); border-radius: 12px; padding: 4px 10px 4px 4px; }
+.modulos .ic { width: 32px; height: 32px; border-radius: 12px; display: grid; place-items: center; }
+.ic.base { background: var(--t-verde); }
+.ic.mod { background: var(--t-mandarina); }
+.ic.nuevo { background: var(--t-uva); }
+.badge-nuevo { background: var(--uva); color: var(--blanco); font-size: 10px; font-weight: 700; letter-spacing: .06em; padding: 2px 7px; border-radius: 999px; }
+.fase .precio { margin-top: auto; padding-top: 12px; border-top: 1px solid rgba(10,43,44,.12); display: flex; align-items: baseline; gap: 6px; font-variant-numeric: tabular-nums; }
+.fase .precio b { font-family: var(--f-titular); font-size: 30px; letter-spacing: -0.03em; }
+.fase .precio span { color: var(--gris); font-size: 14px; }
+.leyenda { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 13px; color: var(--gris); margin-top: 18px; }
+.leyenda span { display: inline-flex; align-items: center; gap: 6px; }
+.leyenda i { width: 14px; height: 14px; border-radius: 5px; display: inline-block; }
+@media (min-width: 700px) { .tarjetas { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1100px) {
+  .tarjetas { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .segmentos { position: static; }
+}
+
+/* ---------- Precios ---------- */
+.precios { background: var(--blanco); padding-block: 64px; }
+.precios .cabeza { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; align-items: end; margin-bottom: 32px; }
+.precios .cabeza p { color: var(--gris); font-size: 18px; margin-top: 12px; max-width: 52ch; }
+.precios .rumi { display: flex; align-items: flex-end; gap: 10px; }
+.precios .rumi .globo { max-width: 200px; margin-bottom: 44px; background: var(--crema); box-shadow: none; }
+.cotizador { display: grid; gap: 20px; }
+.opciones { display: grid; gap: 10px; }
+.opcion { display: grid; grid-template-columns: 48px minmax(0, 1fr) auto; gap: 14px; align-items: center; border: 1.5px solid var(--linea); border-radius: var(--r-tarjeta); padding: 14px 16px; background: var(--blanco); }
+.opcion.on { border-color: var(--verde); background: var(--t-verde); }
+.opcion .n { font-family: var(--f-titular); font-weight: 800; font-size: 36px; letter-spacing: -0.04em; line-height: 1; text-align: center; }
+.opcion .t b { display: block; font-family: var(--f-titular); font-size: 19px; letter-spacing: -0.02em; }
+.opcion .t span { font-size: 14px; color: var(--gris); }
+.opcion .p { font-weight: 600; font-variant-numeric: tabular-nums; text-align: right; font-size: 15px; }
+.opcion .p small { display: block; font-weight: 400; color: var(--gris); font-size: 12px; }
+.sw-wrap { position: relative; display: inline-flex; }
+.sw-wrap input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.sw { width: 52px; height: 32px; border-radius: 999px; background: var(--linea); position: relative; transition: background .15s; }
+.sw::after { content: ""; position: absolute; top: 4px; left: 4px; width: 24px; height: 24px; border-radius: 50%; background: var(--blanco); transition: transform .15s; }
+.sw-wrap input:checked + .sw { background: var(--verde); }
+.sw-wrap input:checked + .sw::after { transform: translateX(20px); }
+.sw-wrap input:disabled + .sw { opacity: .7; }
+.incluida { font-size: 12px; font-weight: 600; color: var(--verde); }
+.modulos-f4 { grid-column: 1 / -1; display: grid; gap: 8px; padding-top: 10px; border-top: 1px dashed var(--linea); }
+.chk { display: flex; align-items: center; gap: 10px; font-size: 15px; cursor: pointer; }
+.chk input { width: 20px; height: 20px; accent-color: var(--verde); }
+.chk span.p { margin-left: auto; color: var(--gris); font-variant-numeric: tabular-nums; font-size: 14px; }
+.total-card { background: var(--crema); border-radius: 20px; padding: 22px; display: grid; gap: 14px; align-content: start; font-variant-numeric: tabular-nums; }
+.total-card .linea { display: flex; justify-content: space-between; font-size: 16px; }
+.total-card .linea span:first-child { color: var(--gris); }
+.total-card .grande { background: var(--mandarina); color: var(--profundo); border-radius: 16px; padding: 16px 18px; display: grid; gap: 2px; }
+.total-card .grande small { font-weight: 600; font-size: 14px; }
+.total-card .grande b { font-family: var(--f-titular); font-weight: 800; font-size: 46px; letter-spacing: -0.04em; line-height: 1; }
+.total-card .claro { font-size: 15px; display: grid; gap: 6px; padding: 0; margin: 0; }
+.total-card .claro li { list-style: none; display: flex; gap: 8px; }
+.total-card .claro li::before { content: "✓"; color: var(--verde); font-weight: 700; }
+.nota-ejemplo { font-size: 13px; color: var(--gris); }
+@media (min-width: 960px) {
+  .cotizador { grid-template-columns: 3fr 2fr; align-items: start; gap: 28px; }
+  .total-card { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 84px); }
+}
+@media (max-width: 640px) {
+  .precios .cabeza { grid-template-columns: 1fr; }
+  .precios .rumi { order: -1; }
+  .opcion { grid-template-columns: 36px minmax(0, 1fr) auto; padding: 12px; gap: 10px; }
+  .opcion .p { grid-column: 2 / 3; text-align: left; }
+  .opcion .p small { display: inline; margin-left: 4px; }
+}
+
+/* ---------- Así de fácil ---------- */
+.facil { background: var(--t-verde); padding-block: 64px; }
+.facil .cabeza { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 20px; align-items: end; margin-bottom: 32px; }
+.facil .duo { display: flex; align-items: flex-end; gap: 4px; }
+.pasos { display: grid; gap: 14px; padding: 0; margin: 0; counter-reset: p; }
+.pasos li { list-style: none; background: var(--blanco); border-radius: var(--r-tarjeta); padding: 20px; display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 14px; counter-increment: p; }
+.pasos li::before { content: counter(p); width: 52px; height: 52px; border-radius: 14px; background: var(--profundo); color: var(--blanco); font-family: var(--f-titular); font-weight: 800; font-size: 26px; display: grid; place-items: center; }
+.pasos b { font-family: var(--f-titular); font-size: 21px; letter-spacing: -0.02em; display: block; line-height: 1.1; }
+.pasos span { color: var(--gris); font-size: 15px; }
+.compromisos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 28px; }
+.compromiso { border-radius: var(--r-tarjeta); padding: 18px; background: var(--blanco); }
+.compromiso b { font-family: var(--f-titular); font-weight: 800; font-size: 34px; letter-spacing: -0.04em; line-height: 1; display: block; }
+.compromiso span { font-size: 14px; color: var(--gris); }
+.testimonios-titulo { margin-top: 44px; margin-bottom: 14px; font-size: 22px; }
+.testimonios { display: grid; grid-auto-flow: column; grid-auto-columns: 86%; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; overscroll-behavior-x: contain; }
+.testimonio { scroll-snap-align: start; background: var(--blanco); border: 2px dashed var(--linea); border-radius: var(--r-tarjeta); padding: 18px; display: grid; gap: 10px; align-content: start; }
+.testimonio .foto { aspect-ratio: 16 / 9; border-radius: 12px; background: var(--crema); display: grid; place-items: center; color: var(--gris); font-size: 13px; }
+.testimonio .giro { font-size: 13px; font-weight: 600; color: var(--verde); }
+.testimonio p { color: var(--gris); font-size: 15px; }
+.cierre { margin-top: 44px; background: var(--profundo); color: var(--blanco); border-radius: 24px; padding: 28px; display: grid; gap: 20px; align-items: center; }
+.cierre h3 { font-size: clamp(30px, 5vw, 44px); }
+.cierre p { color: var(--suave); margin-top: 10px; }
+.cierre .kora { display: flex; justify-content: flex-start; }
+@media (min-width: 760px) {
+  .pasos { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .pasos li { grid-template-columns: 1fr; }
+  .compromisos { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .testimonios { grid-auto-flow: row; grid-template-columns: repeat(3, minmax(0, 1fr)); overflow: visible; }
+  .cierre { grid-template-columns: minmax(0, 1fr) auto auto; padding: 36px 40px; }
+}
+@media (max-width: 560px) { .facil .cabeza { grid-template-columns: 1fr; } .facil .duo { order: -1; } }
+
+/* ---------- Footer ---------- */
+.footer { background: var(--profundo); color: var(--suave); padding-block: 48px 120px; font-size: 15px; }
+.footer .arriba { display: grid; gap: 28px; }
+.footer .marca { display: grid; gap: 14px; align-content: start; }
+.footer .marca p { font-family: var(--f-titular); font-weight: 700; font-size: 20px; color: var(--blanco); letter-spacing: -0.02em; }
+.footer details { border-bottom: 1px solid rgba(255,255,255,.12); }
+.footer summary { cursor: pointer; padding: 14px 0; font-weight: 600; color: var(--blanco); list-style: none; display: flex; justify-content: space-between; }
+.footer summary::-webkit-details-marker { display: none; }
+.footer summary::after { content: "+"; font-size: 20px; line-height: 1; }
+.footer details[open] summary::after { content: "–"; }
+.footer details ul { padding: 0 0 14px; margin: 0; display: grid; gap: 10px; }
+.footer details li { list-style: none; }
+.footer a { color: var(--suave); text-decoration: none; }
+.footer a:hover { color: var(--blanco); }
+.footer .firma { margin-top: 32px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.12); display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-between; font-size: 14px; }
+@media (min-width: 900px) {
+  .footer { padding-bottom: 48px; }
+  .footer .arriba { grid-template-columns: 2fr 1fr 1fr 1fr; }
+  .footer details { border: 0; }
+  .footer summary { pointer-events: none; padding-top: 0; }
+  .footer summary::after, .footer details[open] summary::after { content: ""; }
+}
+
+/* ---------- Barra fija móvil y ayuda de Nuvi ---------- */
+.barra-movil { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; background: var(--profundo); padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px)); display: flex; gap: 10px; align-items: center; border-top: 1px solid rgba(255,255,255,.12); transform: translateY(110%); transition: transform .2s; }
+.barra-movil.visible { transform: none; }
+.barra-movil .btn { flex: 1; }
+.ayuda { display: inline-flex; align-items: center; gap: 8px; background: var(--blanco); color: var(--profundo); border: 0; border-radius: var(--r-pill); padding: 4px 14px 4px 4px; font: 600 14px var(--f-texto); cursor: pointer; text-decoration: none; min-height: 48px; }
+.ayuda .cara { width: 40px; height: 40px; border-radius: 50%; background: var(--t-mandarina); display: grid; place-items: center; overflow: hidden; }
+.ayuda-flotante { display: none; }
+@media (min-width: 900px) {
+  .barra-movil { display: none; }
+  .ayuda-flotante { display: inline-flex; position: fixed; right: 24px; bottom: calc(24px + env(safe-area-inset-bottom, 0px)); z-index: 30; box-shadow: 0 0 0 1px var(--linea); }
+}
+.panel-ayuda { position: fixed; z-index: 40; right: 16px; left: 16px; bottom: calc(84px + env(safe-area-inset-bottom, 0px)); background: var(--blanco); border-radius: 20px; padding: 18px; box-shadow: 0 0 0 1px var(--linea); display: grid; gap: 10px; max-width: 360px; margin-left: auto; }
+.panel-ayuda b { font-family: var(--f-titular); font-size: 20px; letter-spacing: -0.02em; }
+.panel-ayuda p { color: var(--gris); font-size: 15px; }
+.panel-ayuda .cerrar { justify-self: end; background: none; border: 0; color: var(--gris); font: 600 14px var(--f-texto); cursor: pointer; padding: 4px; }
+</style>
+</head>
+<body>
+<header class="header oscuro">
+  <div class="contenedor">
+    <a href="#inicio" aria-label="nuvora, inicio" style="text-decoration:none"><span data-logo="negativo" data-size="26"></span></a>
+    <nav aria-label="Principal">
+      <a href="#fases">Fases</a>
+      <a href="#precios">Precios</a>
+      <a href="#facil">Cómo empiezo</a>
+      <a href="#ayuda">Ayuda</a>
+    </nav>
+    <div class="acciones">
+      <a class="entrar" href="#">Entrar</a>
+      <a class="btn btn-m" href="#precios">Empieza gratis</a>
+      <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="menu-panel">Menú</button>
+    </div>
+  </div>
+  <div class="menu-panel" id="menu-panel" hidden>
+    <a href="#fases">Fases</a>
+    <a href="#precios">Precios</a>
+    <a href="#facil">Cómo empiezo</a>
+    <a href="#ayuda">Ayuda</a>
+    <a href="#">Entrar</a>
+    <a class="btn btn-m" href="#precios">Empieza gratis 14 días</a>
+  </div>
+</header>
+
+<main id="inicio">
+  <!-- 01 · HERO -->
+  <section class="hero oscuro">
+    <div class="contenedor grid">
+      <div>
+        <div class="nuvi-movil" aria-hidden="true">
+          <span data-mascota="nuvi" data-pose="wave" data-size="112"></span>
+          <span class="globo">¡Abrimos! Yo te enseño.</span>
+        </div>
+        <p class="eyebrow">Punto de venta para negocios en México</p>
+        <h1>Crece sin complicarte.</h1>
+        <p class="valor">Un punto de venta que empieza cobrando y crece contigo. Inventario, facturas y sucursales, cuando las necesites.</p>
+        <div class="botones">
+          <a class="btn btn-m" href="#precios">Empieza gratis 14 días</a>
+          <a class="btn btn-claro" href="#precios">Ver precios</a>
+        </div>
+        <ul class="confianza">
+          <li>Activamos tu cuenta en 24 horas</li>
+          <li>Sin plazo forzoso</li>
+          <li>Te respondemos en menos de 5 minutos</li>
+        </ul>
+      </div>
+      <div class="escena" aria-hidden="true">
+        <div class="venta">
+          <p class="neg">Abarrotes Doña Lupe · Caja 1 · ejemplo</p>
+          <div style="margin-top:10px">
+            <div class="fila"><span>2 Refresco 600 ml</span><span>$36.00</span></div>
+            <div class="fila"><span>1 Pan de caja</span><span>$48.50</span></div>
+            <div class="fila"><span>3 Jabón de barra</span><span>$54.00</span></div>
+            <div class="fila"><span>1 Huevo 12 pzas</span><span>$42.00</span></div>
+          </div>
+          <div class="total"><span style="font-size:16px;font-family:var(--f-texto);font-weight:600">Total</span><span>$180.50</span></div>
+          <div class="cobrar">Cobrar</div>
+        </div>
+        <span class="nuvi" data-mascota="nuvi" data-pose="wave" data-size="210"></span>
+        <span class="globo">¡Abrimos! Yo te enseño.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 · FASES -->
+  <section class="fases" id="fases">
+    <div class="contenedor">
+      <div class="cabeza">
+        <span class="etiqueta" style="background:var(--t-verde);color:var(--profundo);justify-self:start">Tu negocio, a tu manera</span>
+        <h2>Tu negocio crece por fases, a tu ritmo.</h2>
+        <p>Es un camino, no un plan cerrado. Te quedas en la fase que quieras o te saltas una. El sistema es el mismo; solo activas lo que te hace falta.</p>
+      </div>
+      <div class="segmentos" aria-hidden="true">
+        <div class="barra" id="barra-fases"><span class="on"></span><span></span><span></span><span></span></div>
+        <small id="barra-texto">Estás viendo: Fase 1 · Abrir</small>
+      </div>
+      <div class="tarjetas">
+        <article class="fase f1" data-fase="1">
+          <div class="top"><div><div class="num">1</div><p class="nombre">FASE 1 · CON NUVI</p></div><span data-mascota="nuvi" data-pose="wave" data-size="96"></span></div>
+          <h3>Abrir</h3>
+          <p class="desc">Caja, ventas y reportes. Empiezas a cobrar el mismo día.</p>
+          <ul class="modulos">
+            <li><span class="ic base" data-icono="caja" data-size="18"></span>Caja</li>
+            <li><span class="ic base" data-icono="ventas" data-size="18"></span>Ventas</li>
+            <li><span class="ic base" data-icono="reportes" data-size="18"></span>Reportes</li>
+          </ul>
+          <p class="dice">Listo, ya puedes cobrar. ¿Te enseño cómo?</p>
+          <div class="precio"><b>$299</b><span>al mes</span></div>
+        </article>
+        <article class="fase f2" data-fase="2">
+          <div class="top"><div><div class="num">2</div><p class="nombre">FASE 2 · CON VORA</p></div><span data-mascota="vora" data-pose="point" data-size="96"></span></div>
+          <h3>Ordenar</h3>
+          <p class="desc">Inventario y alertas de producto bajo. Te avisa antes de que algo se acabe.</p>
+          <ul class="modulos">
+            <li><span class="ic mod" data-icono="inventario" data-size="18"></span>Inventario</li>
+          </ul>
+          <p class="dice">Te quedan 3 refrescos. ¿Pedimos más?</p>
+          <div class="precio"><b>+$99</b><span>al mes</span></div>
+        </article>
+        <article class="fase f3" data-fase="3">
+          <div class="top"><div><div class="num">3</div><p class="nombre">FASE 3 · CON RUMI</p></div><span data-mascota="rumi" data-pose="hips" data-face="calm" data-size="96"></span></div>
+          <h3>Facturar</h3>
+          <p class="desc">Facturación CFDI 4.0 con timbres incluidos. Tu cliente la pide con el folio del ticket.</p>
+          <ul class="modulos">
+            <li><span class="ic mod" data-icono="facturacion" data-size="18"></span>Facturación</li>
+          </ul>
+          <p class="dice">Falta el código postal del cliente. Con eso la timbramos.</p>
+          <div class="precio"><b>+$99</b><span>al mes</span></div>
+        </article>
+        <article class="fase f4" data-fase="4">
+          <div class="top"><div><div class="num">4</div><p class="nombre">FASE 4 · CON KORA</p></div><span data-mascota="kora" data-pose="cheer" data-face="happy" data-size="96"></span></div>
+          <h3>Crecer</h3>
+          <p class="desc">Sucursales, lealtad y pagos. Uno o varios, como quieras.</p>
+          <ul class="modulos">
+            <li><span class="ic nuevo" data-icono="sucursales" data-size="18"></span>Sucursales <span class="badge-nuevo">NUEVO</span></li>
+            <li><span class="ic mod" data-icono="lealtad" data-size="18"></span>Lealtad</li>
+            <li><span class="ic mod" data-icono="pagos" data-size="18"></span>Pagos</li>
+          </ul>
+          <p class="dice">¿Y si abrimos otra?</p>
+          <div class="precio"><b>+$99</b><span>por módulo, al mes</span></div>
+        </article>
+      </div>
+      <div class="leyenda">
+        <span><i style="background:var(--t-verde)"></i>Incluido desde el inicio</span>
+        <span><i style="background:var(--t-mandarina)"></i>Se agrega cuando lo necesitas</span>
+        <span><i style="background:var(--t-uva)"></i>Nuevo</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 · PRECIOS -->
+  <section class="precios" id="precios">
+    <div class="contenedor">
+      <div class="cabeza">
+        <div>
+          <h2>Lo que ves es lo que pagas.</h2>
+          <p>Elige tus fases y te decimos cuánto pagas al mes, con IVA incluido. Sin plazo forzoso: subes o bajas de fase cuando quieras.</p>
+        </div>
+        <div class="rumi" aria-hidden="true">
+          <span class="globo">Te lo sumo con IVA para que no haya sorpresas.</span>
+          <span data-mascota="rumi" data-pose="hips" data-face="calm" data-size="104"></span>
+        </div>
+      </div>
+      <div class="cotizador">
+        <form class="opciones" id="cotizador" aria-label="Cotizador por fases">
+          <div class="opcion on">
+            <span class="n">1</span>
+            <span class="t"><b>Fase 1 · Abrir</b><span>Caja, ventas y reportes. Incluye instalación y capacitación.</span></span>
+            <span class="p">$299.00<small>al mes</small></span>
+            <span class="incluida" style="grid-column:1/-1">Siempre incluida: es la base para cobrar.</span>
+          </div>
+          <label class="opcion" for="f2">
+            <span class="n">2</span>
+            <span class="t"><b>Fase 2 · Ordenar</b><span>Inventario y alertas de producto bajo.</span></span>
+            <span class="sw-wrap"><input type="checkbox" id="f2" data-precio="99" checked><span class="sw"></span><span class="sr">Agregar Fase 2</span></span>
+            <span class="p">+$99.00<small>al mes</small></span>
+          </label>
+          <label class="opcion" for="f3">
+            <span class="n">3</span>
+            <span class="t"><b>Fase 3 · Facturar</b><span>Facturación CFDI 4.0 con timbres incluidos.</span></span>
+            <span class="sw-wrap"><input type="checkbox" id="f3" data-precio="99" checked><span class="sw"></span><span class="sr">Agregar Fase 3</span></span>
+            <span class="p">+$99.00<small>al mes</small></span>
+          </label>
+          <div class="opcion" id="op-f4">
+            <span class="n">4</span>
+            <span class="t"><b>Fase 4 · Crecer</b><span>Elige uno o varios módulos.</span></span>
+            <span class="p" id="f4-precio">+$0.00<small>al mes</small></span>
+            <div class="modulos-f4">
+              <label class="chk" for="m-suc"><input type="checkbox" id="m-suc" data-precio="99"> Sucursales <span class="badge-nuevo">NUEVO</span><span class="p">+$99</span></label>
+              <label class="chk" for="m-leal"><input type="checkbox" id="m-leal" data-precio="99"> Lealtad<span class="p">+$99</span></label>
+              <label class="chk" for="m-pagos"><input type="checkbox" id="m-pagos" data-precio="99"> Pagos<span class="p">+$99</span></label>
+            </div>
+          </div>
+        </form>
+        <aside class="total-card" aria-live="polite">
+          <div class="linea"><span id="t-fases">Fases 1–3</span><span id="t-sub">$497.00</span></div>
+          <div class="linea"><span>IVA 16 %</span><span id="t-iva">$79.52</span></div>
+          <div class="grande"><small>Total al mes con IVA</small><b id="t-total">$576.52</b></div>
+          <ul class="claro">
+            <li>Precios en pesos mexicanos.</li>
+            <li>Sin plazo forzoso ni cargos por cancelar.</li>
+            <li>Avanzas de fase cuando quieras.</li>
+          </ul>
+          <a class="btn btn-v" href="#facil">Empezar con estas fases</a>
+          <p class="nota-ejemplo">Precios de ejemplo del manual de marca; se ajustan al tabulador real antes de publicar.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 · ASÍ DE FÁCIL -->
+  <section class="facil" id="facil">
+    <div class="contenedor">
+      <div class="cabeza">
+        <div>
+          <h2>Así de fácil empiezas.</h2>
+          <p style="color:var(--gris);font-size:18px;margin-top:12px;max-width:50ch">Nadie debe sentirse tonto por no saber algo. Te acompañamos hasta tu primera venta.</p>
+        </div>
+        <div class="duo" aria-hidden="true">
+          <span data-mascota="nuvi" data-pose="point" data-face="wink" data-size="112"></span>
+        </div>
+      </div>
+      <ol class="pasos">
+        <li><div><b>Elige tus fases.</b><span>Empieza con Abrir. Lo demás lo agregas cuando quieras.</span></div></li>
+        <li><div><b>Activamos tu cuenta en 24 horas.</b><span>Damos de alta tus productos contigo, sin prisa.</span></div></li>
+        <li><div><b>Te acompañamos en tu primera venta.</b><span>Nuvi te enseña a cobrar y a hacer tu corte de caja.</span></div></li>
+      </ol>
+      <div class="compromisos">
+        <div class="compromiso"><b>3</b><span>toques para cobrar</span></div>
+        <div class="compromiso"><b>24 h</b><span>para activar tu cuenta</span></div>
+        <div class="compromiso"><b>&lt;5 min</b><span>para responderte por WhatsApp</span></div>
+        <div class="compromiso"><b>0</b><span>ventas perdidas sin internet: se guarda solo</span></div>
+      </div>
+
+      <h3 class="testimonios-titulo">Lo que dicen los negocios</h3>
+      <div class="testimonios" tabindex="0" aria-label="Testimonios">
+        <article class="testimonio"><div class="foto">Foto del negocio</div><span class="giro">Tiendita · Ciudad</span><p>Espacio para un testimonio real, con nombre, giro, ciudad y permiso por escrito. No se publican reseñas inventadas.</p></article>
+        <article class="testimonio"><div class="foto">Foto del negocio</div><span class="giro">Fonda · Ciudad</span><p>Ideal: una frase en sus palabras sobre lo que cambió, por ejemplo el corte de caja o el inventario.</p></article>
+        <article class="testimonio"><div class="foto">Foto del negocio</div><span class="giro">Boutique · Ciudad</span><p>Tres testimonios de giros distintos, para que cada dueño se vea reflejado.</p></article>
+      </div>
+
+      <div class="cierre oscuro">
+        <div>
+          <h3>¿Y si abrimos otra?</h3>
+          <p>Cuando tu negocio esté listo para más, Kora te muestra el siguiente paso.</p>
+        </div>
+        <span class="kora" aria-hidden="true" data-mascota="kora" data-pose="cheer" data-face="happy" data-size="96"></span>
+        <a class="btn btn-m" href="#precios">Empieza gratis 14 días</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer" id="ayuda">
+  <div class="contenedor">
+    <div class="arriba">
+      <div class="marca">
+        <span data-logo="negativo" data-size="28"></span>
+        <p>Crece sin complicarte.</p>
+      </div>
+      <details open>
+        <summary>Producto</summary>
+        <ul><li><a href="#fases">Fases</a></li><li><a href="#precios">Precios</a></li><li><a href="#fases">Módulos</a></li><li><a href="#">Para tu giro</a></li></ul>
+      </details>
+      <details>
+        <summary>Ayuda</summary>
+        <ul><li><a href="#" data-abrir-ayuda>Hablar con Nuvi</a></li><li><a href="#">Primeros pasos</a></li><li><a href="#">Pide tu factura</a></li><li><span>WhatsApp · número por confirmar</span></li></ul>
+      </details>
+      <details>
+        <summary>Legal</summary>
+        <ul><li><a href="#">Aviso de privacidad</a></li><li><a href="#">Términos</a></li></ul>
+      </details>
+    </div>
+    <div class="firma">
+      <span>© 2026 Nuvora · nuvora.mx · Crece sin complicarte.</span>
+      <span>Hecho en México</span>
+    </div>
+  </div>
+</footer>
+
+<div class="barra-movil" id="barra-movil">
+  <a class="btn btn-m" href="#precios">Empieza gratis 14 días</a>
+  <button class="ayuda" type="button" data-abrir-ayuda aria-label="Hablar con Nuvi"><span class="cara" data-mascota="nuvi" data-size="34"></span></button>
+</div>
+<button class="ayuda ayuda-flotante" type="button" data-abrir-ayuda><span class="cara" data-mascota="nuvi" data-size="34"></span>¿Te ayudo?</button>
+<div class="panel-ayuda" id="panel-ayuda" role="dialog" aria-label="Ayuda de Nuvi" hidden>
+  <div style="display:flex;gap:12px;align-items:flex-end"><span data-mascota="nuvi" data-pose="wave" data-size="64"></span><b>¿Te ayudo?</b></div>
+  <p>Escríbeme por aquí o por WhatsApp. Respondemos en menos de 5 minutos.</p>
+  <a class="btn btn-v" href="#">Hablar con Nuvi</a>
+  <button class="cerrar" type="button" id="cerrar-ayuda">Cerrar</button>
+</div>
+
+<script src="nuvora-kit.js"></script>
+<script>
+(function () {
+  /* Footer: en escritorio todos los grupos de links abiertos */
+  if (window.matchMedia('(min-width: 900px)').matches) document.querySelectorAll('.footer details').forEach(function (d) { d.open = true; });
+
+  /* Menú móvil */
+  var mb = document.getElementById('menu-btn'), mp = document.getElementById('menu-panel');
+  mb.addEventListener('click', function () {
+    var abierto = mp.hidden;
+    mp.hidden = !abierto;
+    mb.setAttribute('aria-expanded', String(abierto));
+    mb.textContent = abierto ? 'Cerrar' : 'Menú';
+  });
+  mp.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { mp.hidden = true; mb.setAttribute('aria-expanded', 'false'); mb.textContent = 'Menú'; }); });
+
+  /* Ayuda de Nuvi */
+  var pa = document.getElementById('panel-ayuda');
+  document.querySelectorAll('[data-abrir-ayuda]').forEach(function (b) {
+    b.addEventListener('click', function (e) { e.preventDefault(); pa.hidden = false; });
+  });
+  document.getElementById('cerrar-ayuda').addEventListener('click', function () { pa.hidden = true; });
+
+  /* Barra fija móvil: aparece al pasar el hero */
+  var bm = document.getElementById('barra-movil'), hero = document.querySelector('.hero');
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) { bm.classList.toggle('visible', !es[0].isIntersecting); }).observe(hero);
+  } else { bm.classList.add('visible'); }
+
+  /* Barra de cuatro segmentos: marca la fase que estás viendo */
+  var segs = document.querySelectorAll('#barra-fases span'), txt = document.getElementById('barra-texto');
+  var NOM = ['Abrir', 'Ordenar', 'Facturar', 'Crecer'];
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        var n = +e.target.dataset.fase;
+        segs.forEach(function (s, i) { s.classList.toggle('on', i < n); });
+        txt.textContent = 'Estás viendo: Fase ' + n + ' · ' + NOM[n - 1];
+      });
+    }, { rootMargin: '-45% 0px -45% 0px' });
+    document.querySelectorAll('.fase[data-fase]').forEach(function (f) { io.observe(f); });
+  }
+
+  /* Cotizador: base $299 + fases elegidas, IVA 16 % */
+  var BASE = 299, IVA = 0.16;
+  var fmt = new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN', minimumFractionDigits: 2 });
+  function dinero(n) { return fmt.format(n).replace('MX', ''); }
+  var form = document.getElementById('cotizador');
+  function calcular() {
+    var sub = BASE, fases = [1];
+    ['f2', 'f3'].forEach(function (id, i) {
+      var el = document.getElementById(id);
+      el.closest('.opcion').classList.toggle('on', el.checked);
+      if (el.checked) { sub += +el.dataset.precio; fases.push(i + 2); }
+    });
+    var f4 = 0;
+    ['m-suc', 'm-leal', 'm-pagos'].forEach(function (id) { var el = document.getElementById(id); if (el.checked) f4 += +el.dataset.precio; });
+    document.getElementById('op-f4').classList.toggle('on', f4 > 0);
+    document.getElementById('f4-precio').innerHTML = '+' + dinero(f4) + '<small>al mes</small>';
+    if (f4 > 0) { sub += f4; fases.push(4); }
+    var iva = Math.round(sub * IVA * 100) / 100;
+    var etiqueta = fases.length === 1 ? 'Fase 1' : (fases.join(',') === [1,2,3,4].slice(0, fases.length).join(',') ? 'Fases 1–' + fases[fases.length - 1] : 'Fases ' + fases.join(', '));
+    document.getElementById('t-fases').textContent = etiqueta;
+    document.getElementById('t-sub').textContent = dinero(sub);
+    document.getElementById('t-iva').textContent = dinero(iva);
+    document.getElementById('t-total').textContent = dinero(sub + iva);
+  }
+  form.addEventListener('change', calcular);
+  form.addEventListener('submit', function (e) { e.preventDefault(); });
+  calcular();
+})();
+</script>
+</body>
+</html>
